@@ -111,19 +111,28 @@ def create_square_shape():
 # Pygame
 from pygame.locals import (K_UP, K_DOWN, K_LEFT, K_RIGHT, K_a, K_ESCAPE, K_TAB, KEYDOWN, QUIT)
 pygame.init()
-screen = pygame.display.set_mode([500, 500])
+screen = pygame.display.set_mode([750, 750])
 clock = pygame.time.Clock()
 
 # Set colors
+#black = (0,0,0)
+#green = (0,255,0)
+#blue = (0,0,255)
+#greybrown = (139,146,154)
+
 white = (255,255,255)
-black = (0,0,0)
-red = (255,0,0)
-green = (0,255,0)
-blue = (0,0,255)
+red = (255,25,55)
+lightgreenblue = (182,220,233)
+darkgreenblue = (48,124,145)
+greywhite = (229,227,228)
+brown = (123,92,82)
+
+color1 = lightgreenblue
+color2 = darkgreenblue
 
 # Set origin (0, 0) in the center of the screen instead of top-left and flip direction of y-axis
-center_origin = lambda p: (p[0] + screen.get_width() // 2, -p[1] + screen.get_height() // 2)
-center_origins = lambda l: [center_origin(coordinates) for coordinates in l]
+center_origin = lambda p, center: (center[0] + p[0] + screen.get_width() // 2, center[1] - p[1] + screen.get_height() // 2)
+center_origins = lambda l, center: [center_origin(coordinates, center) for coordinates in l]
 
 # Set the start shape
 shape = create_square_shape()
@@ -143,7 +152,7 @@ selected_id = 0
 
 # Set the texts
 font = pygame.font.Font(pygame.font.get_default_font(), 14)
-draw_text = lambda text, pos: screen.blit(font.render(text, True, black), pos)
+draw_text = lambda text, pos: screen.blit(font.render(text, True, brown, greywhite), pos)
 
 # Start loop
 running = True
@@ -198,11 +207,16 @@ while running:
 
 	screen.fill(white)
 
-	pygame.draw.polygon(screen, blue, center_origins(shape_coordinates(shape)))
-	pygame.draw.circle(screen, green, center_origin((selected_node.x, selected_node.y)), 7)
+	color = color1
+	for x_center in range(-400,600,200):
+		for y_center in range(-400,600,200):
+			pygame.draw.polygon(screen, color, center_origins(shape_coordinates(shape), (x_center,y_center)))
+			color = color2 if color == color1 else color1
+
+	pygame.draw.circle(screen, red, center_origin((selected_node.x, selected_node.y), (0,0)), 7)
 
 	draw_text("ESCHER MAKER", (10, 10))
-	draw_text("Select node with tab. Move node with arrows. Add node with a", (10, 30))
+	draw_text("Select with tab. Move with arrows. Add with a", (10, 30))
 	draw_text(f"Segment: {selected_segment_id}", (10, 50))
 	draw_text(f"Node: {selected_node_id}", (110, 50))
 	draw_text(f"Position: ({selected_node.x}, {selected_node.y})", (185, 50))
