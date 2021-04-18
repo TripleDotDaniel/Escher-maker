@@ -45,32 +45,21 @@ def transpose_segment(segment: Segment):
 def print_combined_segments(shape: Shape):
 	pprint.pp(shape_combined_segments(shape))
 
-def add_node_to_shape(shape: Shape, segment_id, node_id, node_x, node_y):
+def add_node_to_shape(shape: Shape, segment_id, node_id, node: Node):
 	segments = shape.segments
 	segment = segments[segment_id]
-	segment = add_node_to_segment(segment, node_id, node_x, node_y)
-	segments[segment_id] = segment
-	return Shape(segments)
-
-def add_node_to_segment(segment:Segment, node_id, node_x, node_y):
 	nodes = segment.nodes
-	node = Node(node_x, node_y)
 	nodes.insert(node_id, node)
-	return Segment(nodes, segment.trans)
-
-def move_node_in_shape(shape: Shape, segment_id, node_id, node_delta_x, node_delta_y):
-	segments = shape.segments
-	segment = segments[segment_id]
-	segment = move_node_in_segment(segment, node_id, node_delta_x, node_delta_y)
-	segments[segment_id] = segment
+	segments[segment_id] = Segment(nodes, segment.trans)
 	return Shape(segments)
 
-def move_node_in_segment(segment:Segment, node_id, node_delta_x, node_delta_y):
+def replace_node_in_shape(shape: Shape, segment_id, node_id, node: Node):
+	segments = shape.segments
+	segment = segments[segment_id]
 	nodes = segment.nodes
-	node = nodes[node_id]
-	node = Node(node.x + node_delta_x, node.y + node_delta_y)
 	nodes[node_id] = node
-	return Segment(nodes, segment.trans)
+	segments[segment_id] = Segment(nodes, segment.trans)
+	return Shape(segments)
 
 def shape_coordinates(shape:Shape):
 	nodes = []
@@ -136,13 +125,13 @@ center_origins = lambda l, center: [center_origin(coordinates, center) for coord
 
 # Set the start shape
 shape = create_square_shape()
-shape = add_node_to_shape(shape, segment_id=0, node_id=1, node_x=-100, node_y=-30)
-shape = add_node_to_shape(shape, segment_id=0, node_id=2, node_x=-70, node_y=0)
-shape = add_node_to_shape(shape, segment_id=0, node_id=3, node_x=-70, node_y=30)
-shape = add_node_to_shape(shape, segment_id=0, node_id=4, node_x=-100, node_y=30)
-shape = add_node_to_shape(shape, segment_id=1, node_id=1, node_x=-20, node_y=100)
-shape = add_node_to_shape(shape, segment_id=1, node_id=2, node_x=-0, node_y=75)
-shape = add_node_to_shape(shape, segment_id=1, node_id=3, node_x=20, node_y=100)
+shape = add_node_to_shape(shape, segment_id=0, node_id=1, node=Node(-100, -30))
+shape = add_node_to_shape(shape, segment_id=0, node_id=2, node=Node(-70, 0))
+shape = add_node_to_shape(shape, segment_id=0, node_id=3, node=Node(-70, 30))
+shape = add_node_to_shape(shape, segment_id=0, node_id=4, node=Node(-100, 30))
+shape = add_node_to_shape(shape, segment_id=1, node_id=1, node=Node(-20, 100))
+shape = add_node_to_shape(shape, segment_id=1, node_id=2, node=Node(0, 75))
+shape = add_node_to_shape(shape, segment_id=1, node_id=3, node=Node(20, 100))
 print("Start shape")
 print_combined_segments(shape)
 print_coordinates(shape)
@@ -178,8 +167,7 @@ while running:
 					shape, 
 					segment_id=selected_segment_id, 
 					node_id=selected_node_id, 
-					node_x=selected_node.x, 
-					node_y=selected_node.y
+					node=Node(selected_node.x,selected_node.y)
 				)
 				selected_id += 1
 
@@ -190,19 +178,19 @@ while running:
 	pressed_keys = pygame.key.get_pressed()
 
 	if pressed_keys[K_UP]:
-		shape = move_node_in_shape(shape, selected_segment_id, selected_node_id, 0, 5)
+		shape = replace_node_in_shape(shape, selected_segment_id, selected_node_id, Node(selected_node.x,selected_node.y+5))
 		print_coordinates(shape)
 
 	if pressed_keys[K_DOWN]:
-		shape = move_node_in_shape(shape, selected_segment_id, selected_node_id, 0, -5)
+		shape = replace_node_in_shape(shape, selected_segment_id, selected_node_id, Node(selected_node.x,selected_node.y-5))
 		print_coordinates(shape)
 
 	if pressed_keys[K_LEFT]:
-		shape = move_node_in_shape(shape, selected_segment_id, selected_node_id, -5, 0)
+		shape = replace_node_in_shape(shape, selected_segment_id, selected_node_id, Node(selected_node.x-5,selected_node.y))
 		print_coordinates(shape)
 
 	if pressed_keys[K_RIGHT]:
-		shape = move_node_in_shape(shape, selected_segment_id, selected_node_id, 5, 0)
+		shape = replace_node_in_shape(shape, selected_segment_id, selected_node_id, Node(selected_node.x+5,selected_node.y))
 		print_coordinates(shape)
 
 	screen.fill(white)
