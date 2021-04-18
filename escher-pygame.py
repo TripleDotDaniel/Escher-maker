@@ -110,10 +110,10 @@ screen = pygame.display.set_mode([750, 750])
 clock = pygame.time.Clock()
 
 # Set colors
-#black = (0,0,0)
+black = (0,0,0)
 #green = (0,255,0)
 #blue = (0,0,255)
-#greybrown = (139,146,154)
+greybrown = (139,146,154)
 
 white = (255,255,255)
 red = (255,25,55)
@@ -187,7 +187,7 @@ while running:
 	movable_nodes = shape_movable_nodes(shape)
 	for moveable_node in movable_nodes:
 		coord = (moveable_node.node.x, moveable_node.node.y)
-		pygame.draw.circle(screen, greywhite, coord_to_screen(coord, (0,0)), 5)
+		pygame.draw.circle(screen, black, coord_to_screen(coord, (0,0)), 1)
 
 	if selected is not None:
 		mouse_pos = pygame.mouse.get_pos();
