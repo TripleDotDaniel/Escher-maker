@@ -20,6 +20,11 @@ class Segment(object):
 class Shape(object):
 	segments = attr.ib()
 
+@attr.s(frozen=True)
+class MoveableNode(object):
+	segment_id = attr.ib()
+	node_id = attr.ib()
+	node = attr.ib()
 
 # Functions
 def shape_combined_segments(shape: Shape):
@@ -76,7 +81,8 @@ def shape_movable_nodes(shape:Shape):
 	moveable_nodes = []
 	for segment_id, segment in enumerate(shape.segments):
 		for node_id, node in enumerate(segment.nodes[1:-1]):
-			moveable_nodes.append((segment_id, node_id + 1))
+			moveable_node = MoveableNode(segment_id, node_id + 1, node)
+			moveable_nodes.append(moveable_node)
 	return moveable_nodes
 
 # Create start square
@@ -98,7 +104,7 @@ def create_square_shape():
 
 
 # Pygame
-from pygame.locals import (K_UP, K_DOWN, K_LEFT, K_RIGHT, K_a, K_ESCAPE, K_TAB, KEYDOWN, QUIT)
+from pygame.locals import *
 pygame.init()
 screen = pygame.display.set_mode([750, 750])
 clock = pygame.time.Clock()
@@ -119,9 +125,12 @@ brown = (123,92,82)
 color1 = lightgreenblue
 color2 = darkgreenblue
 
+X,Y,Z = 0,1,2
+
 # Set origin (0, 0) in the center of the screen instead of top-left and flip direction of y-axis
-center_origin = lambda p, center: (center[0] + p[0] + screen.get_width() // 2, center[1] - p[1] + screen.get_height() // 2)
-center_origins = lambda l, center: [center_origin(coordinates, center) for coordinates in l]
+coord_to_screen = lambda c, center: (c[0] + center[0] + screen.get_width() // 2, - c[1] + center[1] + screen.get_height() // 2)
+coords_to_screen = lambda l, center: [coord_to_screen(coordinates, center) for coordinates in l]
+screen_to_coord = lambda s, center: (s[0] - center[0] - screen.get_width() // 2, - s[1] + center[1] + screen.get_height() // 2) 
 
 # Set the start shape
 shape = create_square_shape()
@@ -137,7 +146,7 @@ print_combined_segments(shape)
 print_coordinates(shape)
 
 # Select the start node for movement
-selected_id = 0
+selected = None
 
 # Set the texts
 font = pygame.font.Font(pygame.font.get_default_font(), 14)
@@ -147,9 +156,6 @@ draw_text = lambda text, pos: screen.blit(font.render(text, True, brown, greywhi
 running = True
 while running:
 	movable_nodes = shape_movable_nodes(shape)
-	selected_segment_id = movable_nodes[selected_id][0]
-	selected_node_id = movable_nodes[selected_id][1]
-	selected_node = shape.segments[selected_segment_id].nodes[selected_node_id]
 
 	# Single key-press
 	for event in pygame.event.get():
@@ -157,57 +163,43 @@ while running:
 			if event.key == K_ESCAPE:
 				running = False
 
-			if event.key == K_TAB:
-				selected_id += 1
-				if selected_id >= len(movable_nodes): 
-					selected_id = 0
+		elif event.type == MOUSEBUTTONDOWN and event.button == 1:
+			mouse_x, mouse_y = screen_to_coord(pygame.mouse.get_pos(), (0,0))
+			print(pygame.mouse.get_pos(), mouse_x, mouse_y)
+			for m in movable_nodes:
+				if abs(m.node.x - mouse_x) < 10 and abs(m.node.y - mouse_y) < 10 :
+					selected = m
 
-			if event.key == K_a:
-				shape = add_node_to_shape(
-					shape, 
-					segment_id=selected_segment_id, 
-					node_id=selected_node_id, 
-					node=Node(selected_node.x,selected_node.y)
-				)
-				selected_id += 1
+		elif event.type == MOUSEBUTTONUP and event.button == 1:
+			selected = None
 
 		elif event.type == QUIT:
 			running = False
-
-	# Continious key-press
-	pressed_keys = pygame.key.get_pressed()
-
-	if pressed_keys[K_UP]:
-		shape = replace_node_in_shape(shape, selected_segment_id, selected_node_id, Node(selected_node.x,selected_node.y+5))
-		print_coordinates(shape)
-
-	if pressed_keys[K_DOWN]:
-		shape = replace_node_in_shape(shape, selected_segment_id, selected_node_id, Node(selected_node.x,selected_node.y-5))
-		print_coordinates(shape)
-
-	if pressed_keys[K_LEFT]:
-		shape = replace_node_in_shape(shape, selected_segment_id, selected_node_id, Node(selected_node.x-5,selected_node.y))
-		print_coordinates(shape)
-
-	if pressed_keys[K_RIGHT]:
-		shape = replace_node_in_shape(shape, selected_segment_id, selected_node_id, Node(selected_node.x+5,selected_node.y))
-		print_coordinates(shape)
 
 	screen.fill(white)
 
 	color = color1
 	for x_center in range(-400,600,200):
 		for y_center in range(-400,600,200):
-			pygame.draw.polygon(screen, color, center_origins(shape_coordinates(shape), (x_center,y_center)))
+			pygame.draw.polygon(screen, color, coords_to_screen(shape_coordinates(shape), (x_center,y_center)))
 			color = color2 if color == color1 else color1
 
-	pygame.draw.circle(screen, red, center_origin((selected_node.x, selected_node.y), (0,0)), 7)
+	movable_nodes = shape_movable_nodes(shape)
+	for moveable_node in movable_nodes:
+		coord = (moveable_node.node.x, moveable_node.node.y)
+		pygame.draw.circle(screen, greywhite, coord_to_screen(coord, (0,0)), 5)
+
+	if selected is not None:
+		mouse_pos = pygame.mouse.get_pos();
+		mouse_x, mouse_y = screen_to_coord(mouse_pos, (0,0))
+		shape = replace_node_in_shape(shape, selected.segment_id, selected.node_id, Node(mouse_x, mouse_y))
+		pygame.draw.circle(screen, red, (mouse_pos[0], mouse_pos[1]), 5)
 
 	draw_text("ESCHER MAKER", (10, 10))
-	draw_text("Select with tab. Move with arrows. Add with a", (10, 30))
-	draw_text(f"Segment: {selected_segment_id}", (10, 50))
-	draw_text(f"Node: {selected_node_id}", (110, 50))
-	draw_text(f"Position: ({selected_node.x}, {selected_node.y})", (185, 50))
+	# draw_text("Select with tab. Move with arrows. Add with a", (10, 30))
+	# draw_text(f"Segment: {selected_segment_id}", (10, 50))
+	# draw_text(f"Node: {selected_node_id}", (110, 50))
+	# draw_text(f"Position: ({selected_node.x}, {selected_node.y})", (185, 50))
 
 	pygame.display.update()
 
