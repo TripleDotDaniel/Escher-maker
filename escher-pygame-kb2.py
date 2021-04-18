@@ -15,6 +15,17 @@ class Node(object):
 class Segment(object):
 	nodes = attr.ib()
 
+	def transpose_x(self):
+		transposed_nodes = [Node(200 + node.x, node.y) for node in self.nodes] # mirror x coordinate
+		transposed_nodes.reverse() # reverse node order
+		return Segment(transposed_nodes)
+
+	def transpose_y(self):
+		transposed_nodes = [Node(node.x, node.y - 200) for node in self.nodes] # mirror y coordinate
+		transposed_nodes.reverse() # reverse node order
+		return Segment(transposed_nodes)
+
+
 @attr.s(frozen=True)
 class Shape(object):
 	segments = attr.ib()
@@ -25,57 +36,46 @@ class Shape(object):
 			return [
 				self.segments[0],
 				self.segments[1],
-				transpose_segment_x(self.segments[0]),
-				transpose_segment_y(self.segments[1]),
+				self.segments[0].transpose_x(),
+				self.segments[1].transpose_y(),
 			]
 
-# Functions
-def transpose_segment_x(segment: Segment):
-	transposed_nodes = [Node(200 + node.x, node.y) for node in segment.nodes] # mirror x coordinate
-	transposed_nodes.reverse() # reverse node order
-	return Segment(transposed_nodes)
+	def print_combined_segments(self):
+		pprint.pp(self.combined_segments())
 
-def transpose_segment_y(segment: Segment):
-	transposed_nodes = [Node(node.x, node.y - 200) for node in segment.nodes] # mirror y coordinate
-	transposed_nodes.reverse() # reverse node order
-	return Segment(transposed_nodes)
+	def add_node(self, segment_id, node_id, node: Node):
+		segments = self.segments
+		segment = segments[segment_id]
+		nodes = segment.nodes
+		nodes.insert(node_id, node)
+		segments[segment_id] = Segment(nodes)
+		return Shape(segments, self.trans)
 
-def print_combined_segments(shape: Shape):
-	pprint.pp(shape.combined_segments())
+	def replace_node(self, segment_id, node_id, node: Node):
+		segments = shape.segments
+		segment = segments[segment_id]
+		nodes = segment.nodes
+		nodes[node_id] = node
+		segments[segment_id] = Segment(nodes)
+		return Shape(segments, self.trans)
 
-def add_node_to_shape(shape: Shape, segment_id, node_id, node: Node):
-	segments = shape.segments
-	segment = segments[segment_id]
-	nodes = segment.nodes
-	nodes.insert(node_id, node)
-	segments[segment_id] = Segment(nodes)
-	return Shape(segments, shape.trans)
+	def coordinates(self):
+		nodes = []
+		for segment in self.combined_segments():
+			nodes += segment.nodes[:-1] # exclude every last node in segment to prevent overlap
+		nodes.append(nodes[0]) # Duplicate the start node to the end to close the shape
+		coordinates = [(node.x, node.y) for node in nodes]
+		return coordinates
 
-def replace_node_in_shape(shape: Shape, segment_id, node_id, node: Node):
-	segments = shape.segments
-	segment = segments[segment_id]
-	nodes = segment.nodes
-	nodes[node_id] = node
-	segments[segment_id] = Segment(nodes)
-	return Shape(segments, shape.trans)
+	def print_coordinates(self):
+		pprint.pp(self.coordinates())
 
-def shape_coordinates(shape:Shape):
-	nodes = []
-	for segment in shape.combined_segments():
-		nodes += segment.nodes[:-1] # exclude every last node in segment to prevent overlap
-	nodes.append(nodes[0]) # Duplicate the start node to the end to close the shape
-	coordinates = [(node.x, node.y) for node in nodes]
-	return coordinates
-
-def print_coordinates(shape: Shape):
-	pprint.pp(shape_coordinates(shape))
-
-def shape_movable_nodes(shape:Shape):
-	moveable_nodes = []
-	for segment_id, segment in enumerate(shape.segments):
-		for node_id, node in enumerate(segment.nodes[1:-1]):
-			moveable_nodes.append((segment_id, node_id + 1))
-	return moveable_nodes
+	def movable_nodes(self):
+		moveable_nodes = []
+		for segment_id, segment in enumerate(self.segments):
+			for node_id, node in enumerate(segment.nodes[1:-1]):
+				moveable_nodes.append((segment_id, node_id + 1))
+		return moveable_nodes
 
 # Create start square
 def create_square_shape():
@@ -92,7 +92,6 @@ def create_square_shape():
 	)
 	return Shape(segments=[segment1, segment2], trans='xy')
 
-
 # Pygame
 from pygame.locals import (K_UP, K_DOWN, K_LEFT, K_RIGHT, K_a, K_ESCAPE, K_TAB, KEYDOWN, QUIT)
 pygame.init()
@@ -100,18 +99,14 @@ screen = pygame.display.set_mode([750, 750])
 clock = pygame.time.Clock()
 
 # Set colors
-#black = (0,0,0)
-#green = (0,255,0)
-#blue = (0,0,255)
-#greybrown = (139,146,154)
-
+black = (0,0,0)
 white = (255,255,255)
 red = (255,25,55)
 lightgreenblue = (182,220,233)
 darkgreenblue = (48,124,145)
+greybrown = (139,146,154)
 greywhite = (229,227,228)
 brown = (123,92,82)
-
 color1 = lightgreenblue
 color2 = darkgreenblue
 
@@ -121,16 +116,16 @@ center_origins = lambda l, center: [center_origin(coordinates, center) for coord
 
 # Set the start shape
 shape = create_square_shape()
-shape = add_node_to_shape(shape, segment_id=0, node_id=1, node=Node(-100, -30))
-shape = add_node_to_shape(shape, segment_id=0, node_id=2, node=Node(-70, 0))
-shape = add_node_to_shape(shape, segment_id=0, node_id=3, node=Node(-70, 30))
-shape = add_node_to_shape(shape, segment_id=0, node_id=4, node=Node(-100, 30))
-shape = add_node_to_shape(shape, segment_id=1, node_id=1, node=Node(-20, 100))
-shape = add_node_to_shape(shape, segment_id=1, node_id=2, node=Node(0, 75))
-shape = add_node_to_shape(shape, segment_id=1, node_id=3, node=Node(20, 100))
+shape = shape.add_node(segment_id=0, node_id=1, node=Node(-100, -30))
+shape = shape.add_node(segment_id=0, node_id=2, node=Node(-70, 0))
+shape = shape.add_node(segment_id=0, node_id=3, node=Node(-70, 30))
+shape = shape.add_node(segment_id=0, node_id=4, node=Node(-100, 30))
+shape = shape.add_node(segment_id=1, node_id=1, node=Node(-20, 100))
+shape = shape.add_node(segment_id=1, node_id=2, node=Node(0, 75))
+shape = shape.add_node(segment_id=1, node_id=3, node=Node(20, 100))
 print("Start shape")
-print_combined_segments(shape)
-print_coordinates(shape)
+shape.print_combined_segments()
+shape.print_coordinates()
 
 # Select the start node for movement
 selected_id = 0
@@ -142,7 +137,7 @@ draw_text = lambda text, pos: screen.blit(font.render(text, True, brown, greywhi
 # Start loop
 running = True
 while running:
-	movable_nodes = shape_movable_nodes(shape)
+	movable_nodes = shape.movable_nodes()
 	selected_segment_id = movable_nodes[selected_id][0]
 	selected_node_id = movable_nodes[selected_id][1]
 	selected_node = shape.segments[selected_segment_id].nodes[selected_node_id]
@@ -159,8 +154,7 @@ while running:
 					selected_id = 0
 
 			if event.key == K_a:
-				shape = add_node_to_shape(
-					shape, 
+				shape = shape.add_node(
 					segment_id=selected_segment_id, 
 					node_id=selected_node_id, 
 					node=Node(selected_node.x,selected_node.y)
@@ -174,27 +168,27 @@ while running:
 	pressed_keys = pygame.key.get_pressed()
 
 	if pressed_keys[K_UP]:
-		shape = replace_node_in_shape(shape, selected_segment_id, selected_node_id, Node(selected_node.x,selected_node.y+5))
-		print_coordinates(shape)
+		shape = shape.replace_node(selected_segment_id, selected_node_id, Node(selected_node.x,selected_node.y+5))
+		shape.print_coordinates()
 
 	if pressed_keys[K_DOWN]:
-		shape = replace_node_in_shape(shape, selected_segment_id, selected_node_id, Node(selected_node.x,selected_node.y-5))
-		print_coordinates(shape)
+		shape = shape.replace_node(selected_segment_id, selected_node_id, Node(selected_node.x,selected_node.y-5))
+		shape.print_coordinates()
 
 	if pressed_keys[K_LEFT]:
-		shape = replace_node_in_shape(shape, selected_segment_id, selected_node_id, Node(selected_node.x-5,selected_node.y))
-		print_coordinates(shape)
+		shape = shape.replace_node(selected_segment_id, selected_node_id, Node(selected_node.x-5,selected_node.y))
+		shape.print_coordinates()
 
 	if pressed_keys[K_RIGHT]:
-		shape = replace_node_in_shape(shape, selected_segment_id, selected_node_id, Node(selected_node.x+5,selected_node.y))
-		print_coordinates(shape)
+		shape = shape.replace_node(selected_segment_id, selected_node_id, Node(selected_node.x+5,selected_node.y))
+		shape.print_coordinates()
 
 	screen.fill(white)
 
 	color = color1
 	for x_center in range(-400,600,200):
 		for y_center in range(-400,600,200):
-			pygame.draw.polygon(screen, color, center_origins(shape_coordinates(shape), (x_center,y_center)))
+			pygame.draw.polygon(screen, color, center_origins(shape.coordinates(), (x_center,y_center)))
 			color = color2 if color == color1 else color1
 
 	pygame.draw.circle(screen, red, center_origin((selected_node.x, selected_node.y), (0,0)), 7)
