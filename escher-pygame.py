@@ -45,15 +45,32 @@ def transpose_segment(segment: Segment):
 def print_combined_segments(shape: Shape):
 	pprint.pp(shape_combined_segments(shape))
 
-def add_node_to_segment(segment:Segment, new_node:Node, index:int):
-	new_nodes = segment.nodes
-	new_nodes.insert(index, new_node)
-	return Segment(new_nodes, segment.trans)
+def add_node_to_shape(shape: Shape, segment_id, node_id, node_x, node_y):
+	segments = shape.segments
+	segment = segments[segment_id]
+	segment = add_node_to_segment(segment, node_id, node_x, node_y)
+	segments[segment_id] = segment
+	return Shape(segments)
 
-def update_node_in_segment(segment:Segment, updated_node:Node, index:int):
-	updated_nodes = segment.nodes
-	updated_nodes[index] = updated_node
-	return Segment(updated_nodes, segment.trans)
+def add_node_to_segment(segment:Segment, node_id, node_x, node_y):
+	nodes = segment.nodes
+	node = Node(node_x, node_y)
+	nodes.insert(node_id, node)
+	return Segment(nodes, segment.trans)
+
+def move_node_in_shape(shape: Shape, segment_id, node_id, node_delta_x, node_delta_y):
+	segments = shape.segments
+	segment = segments[segment_id]
+	segment = move_node_in_segment(segment, node_id, node_delta_x, node_delta_y)
+	segments[segment_id] = segment
+	return Shape(segments)
+
+def move_node_in_segment(segment:Segment, node_id, node_delta_x, node_delta_y):
+	nodes = segment.nodes
+	node = nodes[node_id]
+	node = Node(node.x + node_delta_x, node.y + node_delta_y)
+	nodes[node_id] = node
+	return Segment(nodes, segment.trans)
 
 def shape_coordinates(shape:Shape):
 	nodes = []
@@ -66,8 +83,14 @@ def shape_coordinates(shape:Shape):
 def print_coordinates(shape: Shape):
 	pprint.pp(shape_coordinates(shape))
 
+def shape_movable_nodes(shape:Shape):
+	moveable_nodes = []
+	for segment_id, segment in enumerate(shape.segments):
+		for node_id, node in enumerate(segment.nodes[1:-1]):
+			moveable_nodes.append((segment_id, node_id + 1))
+	return moveable_nodes
 
-# Steps for demonstration
+# Create start square
 def create_square_shape():
 	# Create square
 	node1 = Node(-100, -100) # left-bottom
@@ -82,92 +105,110 @@ def create_square_shape():
 		nodes = [node2, node3], 
 		trans = 'y'
 	)
-
-	shape = Shape([segment1, segment2])
-	print("Create square")
-	print_combined_segments(shape)
-	return shape
-
-def add_node_to_first_segment(shape: Shape):
-	segment1 = shape.segments[0]
-	segment2 = shape.segments[1]
-	node = Node(-70, 20) # Make a small dent just below the middle
-	index = 1 # Put node between the first and the second node
-	segment1 = add_node_to_segment(segment1, node, index)
-	shape = Shape([segment1, segment2])
-	print("\nAdd node to first segment")
-	print_combined_segments(shape)
-	return shape
-
-def move_node_in_first_segment(shape: Shape, move_x, move_y):
-	segment1 = shape.segments[0]
-	segment2 = shape.segments[1]
-	index = 1
-	node = segment1.nodes[index]
-	moved_node = Node(node.x + move_x, node.y + move_y)
-	segment1 = update_node_in_segment(segment1, moved_node, index)
-	shape = Shape([segment1, segment2])
-	print("\nUpdate node in first segment")
-	print_combined_segments(shape)
-	return shape
+	return Shape([segment1, segment2])
 
 
 # Pygame
-from pygame.locals import (K_UP, K_DOWN, K_LEFT, K_RIGHT, K_ESCAPE, KEYDOWN, QUIT)
-
+from pygame.locals import (K_UP, K_DOWN, K_LEFT, K_RIGHT, K_a, K_ESCAPE, K_TAB, KEYDOWN, QUIT)
 pygame.init()
 screen = pygame.display.set_mode([500, 500])
 clock = pygame.time.Clock()
 
+# Set colors
 white = (255,255,255)
 black = (0,0,0)
 red = (255,0,0)
 green = (0,255,0)
 blue = (0,0,255)
 
-# Set origin (0, 0) in the center of the screen instead of top-left
-center_origin = lambda p: (p[0] + screen.get_width() // 2, p[1] + screen.get_height() // 2)
+# Set origin (0, 0) in the center of the screen instead of top-left and flip direction of y-axis
+center_origin = lambda p: (p[0] + screen.get_width() // 2, -p[1] + screen.get_height() // 2)
 center_origins = lambda l: [center_origin(coordinates) for coordinates in l]
 
 # Set the start shape
 shape = create_square_shape()
-shape = add_node_to_first_segment(shape)
+shape = add_node_to_shape(shape, segment_id=0, node_id=1, node_x=-100, node_y=-30)
+shape = add_node_to_shape(shape, segment_id=0, node_id=2, node_x=-70, node_y=0)
+shape = add_node_to_shape(shape, segment_id=0, node_id=3, node_x=-70, node_y=30)
+shape = add_node_to_shape(shape, segment_id=0, node_id=4, node_x=-100, node_y=30)
+shape = add_node_to_shape(shape, segment_id=1, node_id=1, node_x=-20, node_y=100)
+shape = add_node_to_shape(shape, segment_id=1, node_id=2, node_x=-0, node_y=75)
+shape = add_node_to_shape(shape, segment_id=1, node_id=3, node_x=20, node_y=100)
+print("Start shape")
+print_combined_segments(shape)
+print_coordinates(shape)
 
+# Select the start node for movement
+selected_id = 0
+
+# Set the texts
+font = pygame.font.Font(pygame.font.get_default_font(), 14)
+draw_text = lambda text, pos: screen.blit(font.render(text, True, black), pos)
+
+# Start loop
 running = True
 while running:
+	movable_nodes = shape_movable_nodes(shape)
+	selected_segment_id = movable_nodes[selected_id][0]
+	selected_node_id = movable_nodes[selected_id][1]
+	selected_node = shape.segments[selected_segment_id].nodes[selected_node_id]
 
+	# Single key-press
 	for event in pygame.event.get():
 		if event.type == KEYDOWN:
 			if event.key == K_ESCAPE:
 				running = False
+
+			if event.key == K_TAB:
+				selected_id += 1
+				if selected_id >= len(movable_nodes): 
+					selected_id = 0
+
+			if event.key == K_a:
+				shape = add_node_to_shape(
+					shape, 
+					segment_id=selected_segment_id, 
+					node_id=selected_node_id, 
+					node_x=selected_node.x, 
+					node_y=selected_node.y
+				)
+				selected_id += 1
+
 		elif event.type == QUIT:
 			running = False
 
+	# Continious key-press
 	pressed_keys = pygame.key.get_pressed()
 
 	if pressed_keys[K_UP]:
-		shape = move_node_in_first_segment(shape, 0, -10)
+		shape = move_node_in_shape(shape, selected_segment_id, selected_node_id, 0, 5)
 		print_coordinates(shape)
 
 	if pressed_keys[K_DOWN]:
-		shape = move_node_in_first_segment(shape, 0, 10)
+		shape = move_node_in_shape(shape, selected_segment_id, selected_node_id, 0, -5)
 		print_coordinates(shape)
 
 	if pressed_keys[K_LEFT]:
-		shape = move_node_in_first_segment(shape, -10, 0)
+		shape = move_node_in_shape(shape, selected_segment_id, selected_node_id, -5, 0)
 		print_coordinates(shape)
 
 	if pressed_keys[K_RIGHT]:
-		shape = move_node_in_first_segment(shape, 10, 0)
+		shape = move_node_in_shape(shape, selected_segment_id, selected_node_id, 5, 0)
 		print_coordinates(shape)
 
 	screen.fill(white)
-	pygame.draw.polygon(screen, green, center_origins(shape_coordinates(shape)))
+
+	pygame.draw.polygon(screen, blue, center_origins(shape_coordinates(shape)))
+	pygame.draw.circle(screen, green, center_origin((selected_node.x, selected_node.y)), 7)
+
+	draw_text("ESCHER MAKER", (10, 10))
+	draw_text("Select node with tab. Move node with arrows. Add node with a", (10, 30))
+	draw_text(f"Segment: {selected_segment_id}", (10, 50))
+	draw_text(f"Node: {selected_node_id}", (110, 50))
+	draw_text(f"Position: ({selected_node.x}, {selected_node.y})", (185, 50))
+
 	pygame.display.update()
 
 	clock.tick(60)
 
 pygame.quit()
-
-
-
