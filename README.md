@@ -1,1 +1,2 @@
-# escher-maker
+# Escher maker
+Generate Escher patterns.
