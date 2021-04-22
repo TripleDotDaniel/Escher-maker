@@ -6,11 +6,12 @@ import pygame
 import time
 import numpy as np
 from pygame.locals import (K_UP, K_DOWN, K_LEFT, K_RIGHT, K_a, K_ESCAPE, K_TAB, KEYDOWN, QUIT)
+from escher_generate_pattern import find_all_combinations, make_pattern, draw_pattern, move_shape
 
 
 # Classes (frozen means immutable objects)
 # See attrs docs: https://www.attrs.org
-# frozen=True
+
 @attr.s(eq=False)
 class Node(object):
     pos = attr.ib(default=np.array([0, 0]))
@@ -21,6 +22,7 @@ class Node(object):
 
     def __eq__(self, other):
         return id(self) == id(other)
+
 
 @attr.s()
 class Segment(object):
@@ -56,6 +58,7 @@ class Link(object):
         shape.segments[(index_segment_linked - 1) % len(shape.segments)].nodes[-1] = self.segment_linked.nodes[0]
         shape.segments[(index_segment_linked + 1) % len(shape.segments)].nodes[0] = self.segment_linked.nodes[-1]
 
+
 @attr.s()
 class Shape(object):
     segments = attr.ib()
@@ -73,7 +76,7 @@ class Shape(object):
         self.segments[segment_id].nodes.insert(node_id, node)
 
     def get_coordinates(self):
-        coordinates = [node.pos for node in self.get_nodes()]
+        coordinates = np.array([node.pos for node in self.get_nodes()])
         return coordinates
 
     def get_nodes(self):
@@ -83,7 +86,7 @@ class Shape(object):
                 for node in segment.nodes[:-1]]
 
     def print_coordinates(self):
-        print([id(node) for node in self.get_combined_nodes()])
+        print([id(node) for node in self.get_nodes()])
         pprint.pp(self.get_coordinates())
 
     def move_node(self, node, movement):
@@ -109,7 +112,9 @@ def rotation_matrix(angle):
     return np.array(((c, s), (-s, c)))
 
 
-def create_polygon(combination=[2, 3, 0, 1], size=1):
+def create_polygon(combination=None, size=1):
+    if combination is None:
+        combination = [2, 3, 0, 1]
     nr_sides = len(combination)
 
     # create nodes
@@ -128,22 +133,23 @@ def create_polygon(combination=[2, 3, 0, 1], size=1):
         node_m1 = nodes[(2 * index_side - 1) % (2 * nr_sides)]
         node_0 = nodes[2 * index_side]
         node_p1 = nodes[2 * index_side + 1]
-        segments.append(Segment(nodes=[node_m1, node_0], angle=angle, dist_for_center=size/2))
-        segments.append(Segment(nodes=[node_0, node_p1], angle=angle, dist_for_center=size/2))
+        segments.append(Segment(nodes=[node_m1, node_0], angle=angle, dist_for_center=size / 2))
+        segments.append(Segment(nodes=[node_0, node_p1], angle=angle, dist_for_center=size / 2))
 
     # create links
     links = []
-    #links.append(Link(segment_source=segments[0],
-    #                  segment_linked=segments[5],
-    #                  flip_x=True,
-    #                  flip_y=True))
     for index_side in range(nr_sides):
-        if index_side == combination[index_side]:
+        if index_side == combination[index_side]:  # side linked to itself
             links.append(Link(segment_source=segments[2 * index_side],
                               segment_linked=segments[2 * index_side + 1],
                               flip_x=True,
                               flip_y=True))
-        else:
+            links.append(Link(segment_source=segments[2 * index_side + 1],
+                              segment_linked=segments[2 * index_side],
+                              flip_x=True,
+                              flip_y=True))
+            segments[2 * index_side].nodes[-1].movable = False
+        elif combination[index_side] >= 0:  # side linked to other side of shape
             links.append(Link(segment_source=segments[2 * index_side],
                               segment_linked=segments[2 * combination[index_side] + 1],
                               flip_x=True,
@@ -152,9 +158,59 @@ def create_polygon(combination=[2, 3, 0, 1], size=1):
                               segment_linked=segments[2 * combination[index_side]],
                               flip_x=True,
                               flip_y=True))
+        else:  # side linked to other side of flipped shape
+            links.append(Link(segment_source=segments[2 * index_side],
+                              segment_linked=segments[2 * (-combination[index_side] + 1) + 1],
+                              flip_x=False,
+                              flip_y=True))
+            links.append(Link(segment_source=segments[2 * index_side + 1],
+                              segment_linked=segments[2 * (-combination[index_side] + 1)],
+                              flip_x=False,
+                              flip_y=True))
 
     return Shape(segments=segments, links=links)
 
+
+def move_points(points, actions):
+    for action in actions:
+        if action[0] == 'translate':
+            points += action[1]
+        elif action[0] == 'rotate':
+            points = rotation_matrix(action[1]).dot(points.T).T
+        elif action[0] == 'scale':
+            points *= action[1]
+        else:
+            raise NotImplementedError(f"Action {action[0]} is not defined")
+    return points
+
+
+def pygame_draw_pattern(screen, pattern, shape, tile_color=np.array([0, 0, 256.0]),
+                        tile_flipped_color=np.array([0, 256.0, 0])):
+    shape_points = shape.get_coordinates()
+    for tile in pattern['tiles']:
+        if tile["mirror"] > 0:
+            color = tile_color.copy()
+        else:
+            color = tile_flipped_color.copy()
+        color *= (tile["rotation"] + 1) / (2 * np.pi + 1)
+        shape_points_moved = move_points(shape_points, [['scale', [tile["mirror"], 1]],
+                                                        ['rotate', tile["rotation"]],
+                                                        ['translate', tile["pos"]],
+                                                        ['scale', [1, -1]],  # because y is down on screen
+                                                        ['translate', [screen.get_width() // 2,
+                                                                       screen.get_height() // 2]],  # center on screen
+                                                        ])
+        pygame.draw.polygon(screen, color, shape_points_moved)
+
+
+# Settings
+combination = [1, 0, 2]
+combination = [5, 2, 1, 4, 3, 0]
+size_shape = 100
+
+# Create pattern and shape
+pattern = make_pattern(combination, size=size_shape)
+shape = create_polygon(combination=combination, size=size_shape)
 
 # Pygame
 pygame.init()
@@ -178,14 +234,8 @@ center_origin = lambda p, center: (
     center[0] + p[0] + screen.get_width() // 2, center[1] - p[1] + screen.get_height() // 2)
 center_origins = lambda l, center: [center_origin(coordinates, center) for coordinates in l]
 
-# Set the start shape
-shape = create_polygon(combination=[3, 4, 5, 0, 1, 2], size=200)
-print("Start shape")
-print(shape.get_nodes())
-print(shape.get_coordinates())
-
 # Select the start node for movement
-selected_node = shape.get_nodes()[0]
+selected_node = shape.get_next_node(shape.get_nodes()[0])
 
 # Set the texts
 font = pygame.font.Font(pygame.font.get_default_font(), 14)
@@ -203,7 +253,7 @@ while running:
             if event.key == K_TAB:
                 selected_node = shape.get_next_node(selected_node)
 
-            #if event.key == K_a:
+            # if event.key == K_a:
             #    shape.add_node(
             #        segment_id=selected_segment_id,
             #        node_id=selected_node_id,
@@ -219,7 +269,7 @@ while running:
 
     if pressed_keys[K_UP]:
         shape.move_node(selected_node, [0, 5])
-        print(shape.segments[5])
+
     if pressed_keys[K_DOWN]:
         shape.move_node(selected_node, [0, -5])
 
@@ -231,15 +281,13 @@ while running:
 
     screen.fill(white)
 
-    color = color1
-    # for x_center in range(-400, 600, 200):
-    #     for y_center in range(-400, 600, 200):
-    #         pygame.draw.polygon(screen, color, center_origins(shape.get_coordinates(), (x_center, y_center)))
-    #         color = color2 if color == color1 else color1
-
-    pygame.draw.polygon(screen, color, center_origins(shape.get_coordinates(), (0, 0)))
+    pygame_draw_pattern(screen, pattern, shape)
     for node_to_draw in shape.get_nodes():
-        pygame.draw.circle(screen, brown, center_origin(node_to_draw.pos, (0, 0)), 5)
+        if node_to_draw.movable:
+            color = greywhite
+        else:
+            color = greybrown
+        pygame.draw.circle(screen, color, center_origin(node_to_draw.pos, (0, 0)), 5)
     pygame.draw.circle(screen, red, center_origin(selected_node.pos, (0, 0)), 7)
 
     draw_text("ESCHER MAKER", (10, 10))
