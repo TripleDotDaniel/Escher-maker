@@ -5,9 +5,11 @@ import pprint
 import pygame
 import time
 import numpy as np
-from pygame.locals import (K_UP, K_DOWN, K_LEFT, K_RIGHT, K_a, K_ESCAPE, K_TAB, KEYDOWN, MOUSEBUTTONDOWN, QUIT)
+from pygame.locals import (K_UP, K_DOWN, K_LEFT, K_RIGHT, K_a, K_ESCAPE, K_TAB, KEYDOWN,
+                           MOUSEBUTTONDOWN, MOUSEBUTTONUP, QUIT)
 from escher_generate_pattern import find_all_combinations, make_pattern, draw_pattern, move_shape
 from scipy.interpolate import interp1d
+
 
 # Classes (frozen means immutable objects)
 # See attrs docs: https://www.attrs.org
@@ -57,9 +59,9 @@ class Link(object):
         if self.flip_x:
             self.segment_linked.nodes.reverse()
 
-        #index_segment_linked = shape.segments.index(self.segment_linked)
-        #shape.segments[(index_segment_linked - 1) % len(shape.segments)].nodes[-1] = self.segment_linked.nodes[0]
-        #shape.segments[(index_segment_linked + 1) % len(shape.segments)].nodes[0] = self.segment_linked.nodes[-1]
+        # index_segment_linked = shape.segments.index(self.segment_linked)
+        # shape.segments[(index_segment_linked - 1) % len(shape.segments)].nodes[-1] = self.segment_linked.nodes[0]
+        # shape.segments[(index_segment_linked + 1) % len(shape.segments)].nodes[0] = self.segment_linked.nodes[-1]
 
 
 @attr.s()
@@ -250,12 +252,12 @@ def screen_to_coord(pos_screen, screen):
 
 
 # Settings
-#combination = [1, 0, 2]
+# combination = [1, 0, 2]
 combination = [0, -3, -2]
-#combination = [2, 1, 0, 3]
-#combination = [0, 1, -4, -3]
-#combination = [5, 2, 1, 4, 3, 0]
-#combination = [-4, 1, -5, -1, -3, 5]
+# combination = [2, 1, 0, 3]
+# combination = [0, 1, -4, -3]
+# combination = [5, 2, 1, 4, 3, 0]
+# combination = [-4, 1, -5, -1, -3, 5]
 size_shape = 100
 nr_of_tiles = 25
 
@@ -294,6 +296,7 @@ draw_text = lambda text, pos: screen.blit(font.render(text, True, brown, greywhi
 
 # Start loop
 running = True
+follow_mouse = False
 while running:
     # Single key-press
     for event in pygame.event.get():
@@ -309,10 +312,13 @@ while running:
 
         elif event.type == MOUSEBUTTONDOWN and event.button == 1:
             mouse_pos = screen_to_coord(pygame.mouse.get_pos(), screen)
-            print(shape.get_movable_nodes())
             for node in shape.get_movable_nodes():
                 if np.linalg.norm(node.pos - mouse_pos) < 10:
                     selected_node = node
+                    follow_mouse = True
+
+        elif event.type == MOUSEBUTTONUP and event.button == 1:
+            follow_mouse = False
 
         elif event.type == QUIT:
             running = False
@@ -332,10 +338,9 @@ while running:
     if pressed_keys[K_RIGHT]:
         shape.move_node(selected_node, movement=[5, 0])
 
-    if pygame.mouse.get_pressed()[0]:
+    if follow_mouse:
         mouse_pos = screen_to_coord(pygame.mouse.get_pos(), screen)
         shape.move_node(selected_node, position=mouse_pos)
-
 
     screen.fill(white)
 
