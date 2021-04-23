@@ -72,9 +72,6 @@ class Shape(object):
             output += f"Link {i}: {link}\n"
         return output
 
-    def add_node(self, segment_id, node_id, node: Node):
-        self.segments[segment_id].nodes.insert(node_id, node)
-
     def get_coordinates(self):
         coordinates = np.array([node.pos for node in self.get_nodes()])
         return coordinates
@@ -92,19 +89,36 @@ class Shape(object):
     def move_node(self, node, movement):
         if node.movable:
             node.move(movement)
+
+            # update linked segment(s)
             for link in self.links:
                 if node in link.segment_source.nodes:
                     link.update_linked_segment(self)
 
-    def get_next_node(self, node):
-        nodes = self.get_nodes()
-        index = nodes.index(node)
-        while True:
-            index = (index + 1) % len(nodes)
-            if nodes[index].movable:
-                break
+    def add_node(self, node):
+        # add node
+        for segment in self.segments:
+            if node in segment.nodes:
+                node_index = segment.nodes.index(node)
+                if node_index < len(
+                        segment.nodes) - 1:  # don't match last node because it overlaps with the next segment
+                    segment.nodes.insert(node_index, copy.deepcopy(node))
+                    break
 
-        return nodes[index]
+        # update linked segment(s)
+        for link in self.links:
+            if node in link.segment_source.nodes:
+                link.update_linked_segment(self)
+
+    def get_next_node(self, node=None):
+        movable_nodes = [node for node in self.get_nodes() if node.movable]
+        if len(movable_nodes) == 0:
+            raise RuntimeError("No movable nodes")
+
+        if node in movable_nodes:
+            return movable_nodes[(movable_nodes.index(node) + 1) % len(movable_nodes)]
+        else:
+            return movable_nodes[0]
 
 
 def rotation_matrix(angle):
@@ -112,29 +126,34 @@ def rotation_matrix(angle):
     return np.array(((c, s), (-s, c)))
 
 
-def create_polygon(combination=None, size=1):
+def create_polygon(combination=None, size=1, nodes_per_segment=3):
     if combination is None:
         combination = [2, 3, 0, 1]
     nr_sides = len(combination)
+    segment_per_side = 2
+    nodes_per_side = (nodes_per_segment - 1) * segment_per_side  # minus 1 because of the overlapping node per segment
 
     # create nodes
+    left_corner_pos = np.array([-np.tan(np.pi / nr_sides) * size / 2, size / 2])
+    right_corner_pos = left_corner_pos * [-1, 1]
+    # right corner is an overlapping node, added for correct spacing and then removed
+    nodes_pos = np.linspace(left_corner_pos, right_corner_pos, nodes_per_side + 1)[:-1]
     nodes = []
-    pos0 = np.array([0, size / 2])
-    pos1 = np.array([np.tan(np.pi / nr_sides) * size / 2, size / 2])
     for index_side in range(nr_sides):
         angle = 2 * np.pi / nr_sides * index_side
-        nodes.append(Node(pos=rotation_matrix(angle).dot(pos0), movable=True))
-        nodes.append(Node(pos=rotation_matrix(angle).dot(pos1), movable=False))
+        for i, node_pos in enumerate(nodes_pos):
+            nodes.append(Node(pos=rotation_matrix(angle).dot(node_pos), movable=(i != 0)))
 
     # create segments
     segments = []
     for index_side in range(nr_sides):
         angle = 2 * np.pi / nr_sides * index_side
-        node_m1 = nodes[(2 * index_side - 1) % (2 * nr_sides)]
-        node_0 = nodes[2 * index_side]
-        node_p1 = nodes[2 * index_side + 1]
-        segments.append(Segment(nodes=[node_m1, node_0], angle=angle, dist_for_center=size / 2))
-        segments.append(Segment(nodes=[node_0, node_p1], angle=angle, dist_for_center=size / 2))
+        for s in range(segment_per_side):
+            index_segment = index_side * segment_per_side + s
+            index_nodes = [(index_segment * (nodes_per_segment - 1) + i) % len(nodes) for i in range(nodes_per_segment)]
+            segments.append(Segment(nodes=[nodes[i] for i in index_nodes],
+                                    angle=angle,
+                                    dist_for_center=size / 2))
 
     # create links
     links = []
@@ -148,7 +167,7 @@ def create_polygon(combination=None, size=1):
                               segment_linked=segments[2 * index_side],
                               flip_x=True,
                               flip_y=True))
-            segments[2 * index_side].nodes[-1].movable = False
+            segments[2 * index_side + 1].nodes[0].movable = False
         elif combination[index_side] >= 0:  # side linked to other side of shape
             links.append(Link(segment_source=segments[2 * index_side],
                               segment_linked=segments[2 * combination[index_side] + 1],
@@ -160,11 +179,11 @@ def create_polygon(combination=None, size=1):
                               flip_y=True))
         else:  # side linked to other side of flipped shape
             links.append(Link(segment_source=segments[2 * index_side],
-                              segment_linked=segments[2 * (-combination[index_side] + 1) + 1],
+                              segment_linked=segments[2 * (-combination[index_side] - 1)],
                               flip_x=False,
                               flip_y=True))
             links.append(Link(segment_source=segments[2 * index_side + 1],
-                              segment_linked=segments[2 * (-combination[index_side] + 1)],
+                              segment_linked=segments[2 * (-combination[index_side] - 1) + 1],
                               flip_x=False,
                               flip_y=True))
 
@@ -172,6 +191,7 @@ def create_polygon(combination=None, size=1):
 
 
 def move_points(points, actions):
+    points = copy.deepcopy(points)
     for action in actions:
         if action[0] == 'translate':
             points += action[1]
@@ -204,12 +224,17 @@ def pygame_draw_pattern(screen, pattern, shape, tile_color=np.array([0, 0, 256.0
 
 
 # Settings
-combination = [1, 0, 2]
-combination = [5, 2, 1, 4, 3, 0]
+#combination = [1, 0, 2]
+combination = [0, -3, -2]
+#combination = [2, 1, 0, 3]
+#combination = [0, 1, -4, -3]
+#combination = [5, 2, 1, 4, 3, 0]
+#combination = [-4, 1, -5, -1, -3, 5]
 size_shape = 100
+nr_of_tiles = 25
 
 # Create pattern and shape
-pattern = make_pattern(combination, size=size_shape)
+pattern = make_pattern(combination, size=size_shape, nr_of_tiles=nr_of_tiles)
 shape = create_polygon(combination=combination, size=size_shape)
 
 # Pygame
@@ -235,7 +260,7 @@ center_origin = lambda p, center: (
 center_origins = lambda l, center: [center_origin(coordinates, center) for coordinates in l]
 
 # Select the start node for movement
-selected_node = shape.get_next_node(shape.get_nodes()[0])
+selected_node = shape.get_next_node()
 
 # Set the texts
 font = pygame.font.Font(pygame.font.get_default_font(), 14)
@@ -253,13 +278,8 @@ while running:
             if event.key == K_TAB:
                 selected_node = shape.get_next_node(selected_node)
 
-            # if event.key == K_a:
-            #    shape.add_node(
-            #        segment_id=selected_segment_id,
-            #        node_id=selected_node_id,
-            #        node=Node(selected_node.x, selected_node.y)
-            #    )
-            #    selected_id += 1
+            if event.key == K_a:
+                shape.add_node(selected_node)
 
         elif event.type == QUIT:
             running = False

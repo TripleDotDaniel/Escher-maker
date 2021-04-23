@@ -85,8 +85,10 @@ def make_pattern(combination, nr_of_tiles=20, size=1):
             inset = tile_in_set(tiles, new_tile)
             if not inset[0]:
                 tiles.append(new_tile)
+                if len(tiles) == nr_of_tiles:
+                    return {"combination": combination, "tiles": tiles, "size": size}
             elif not inset[1]:
-                return None
+                raise RuntimeError(f"Combination {combination} does not result in a valid pattern")
         index_tile += 1
     return {"combination": combination, "tiles": tiles, "size": size}
 
