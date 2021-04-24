@@ -32,6 +32,7 @@ class Node(object):
 @attr.s()
 class Segment(object):
     nodes = attr.ib()
+    index_side = attr.ib()
     angle = attr.ib(default=0)
     dist_for_center = attr.ib(default=1)
 
@@ -59,15 +60,17 @@ class Link(object):
         if self.flip_x:
             self.segment_linked.nodes.reverse()
 
-        # index_segment_linked = shape.segments.index(self.segment_linked)
-        # shape.segments[(index_segment_linked - 1) % len(shape.segments)].nodes[-1] = self.segment_linked.nodes[0]
-        # shape.segments[(index_segment_linked + 1) % len(shape.segments)].nodes[0] = self.segment_linked.nodes[-1]
+        # update shared notes in neighboring segments
+        index_segment_linked = shape.segments.index(self.segment_linked)
+        shape.segments[(index_segment_linked - 1) % len(shape.segments)].nodes[-1] = self.segment_linked.nodes[0]
+        shape.segments[(index_segment_linked + 1) % len(shape.segments)].nodes[0] = self.segment_linked.nodes[-1]
 
 
 @attr.s()
 class Shape(object):
     segments = attr.ib()
     links = attr.ib()
+    smoothed_curves = attr.ib(default=False)
 
     def __str__(self):
         output = ""
@@ -76,10 +79,6 @@ class Shape(object):
         for i, link in enumerate(self.links):
             output += f"Link {i}: {link}\n"
         return output
-
-    def get_coordinates(self):
-        coordinates = np.array([node.pos for node in self.get_nodes()])
-        return coordinates
 
     def get_nodes(self):
         # exclude every last node in segment to prevent overlap
@@ -90,8 +89,23 @@ class Shape(object):
     def get_movable_nodes(self):
         return [node for node in self.get_nodes() if node.movable]
 
+    def get_coordinates(self):
+        if self.smoothed_curves:
+            return self.get_smooth_coordinates()
+
+        return np.array([node.pos for node in self.get_nodes()])
+
+    def get_smooth_coordinates(self):
+        smooth_coordinates = []
+        for index_side in range(int(len(self.segments) / 2)):
+            nodes0 = self.segments[2 * index_side].nodes
+            nodes1 = self.segments[2 * index_side + 1].nodes
+            nodes_side = nodes0 + nodes1[1:]
+            print()
+            smooth_coordinates.append(smooth_curve(np.array([node.pos for node in nodes_side])))
+        return np.concatenate(smooth_coordinates)
+
     def print_coordinates(self):
-        print([id(node) for node in self.get_nodes()])
         pprint.pp(self.get_coordinates())
 
     def move_node(self, node, movement=None, position=None):
@@ -134,7 +148,7 @@ def rotation_matrix(angle):
     return np.array(((c, s), (-s, c)))
 
 
-def create_polygon(combination=None, size=1, nodes_per_segment=3):
+def create_polygon(combination=None, size=1, nodes_per_segment=3, smoothed_curves=False):
     if combination is None:
         combination = [2, 3, 0, 1]
     nr_sides = len(combination)
@@ -161,7 +175,8 @@ def create_polygon(combination=None, size=1, nodes_per_segment=3):
             index_nodes = [(index_segment * (nodes_per_segment - 1) + i) % len(nodes) for i in range(nodes_per_segment)]
             segments.append(Segment(nodes=[nodes[i] for i in index_nodes],
                                     angle=angle,
-                                    dist_for_center=size / 2))
+                                    dist_for_center=size / 2,
+                                    index_side=index_side))
 
     # create links
     links = []
@@ -195,7 +210,7 @@ def create_polygon(combination=None, size=1, nodes_per_segment=3):
                               flip_x=False,
                               flip_y=True))
 
-    return Shape(segments=segments, links=links)
+    return Shape(segments=segments, links=links, smoothed_curves=smoothed_curves)
 
 
 def move_points(points, actions):
@@ -214,18 +229,19 @@ def move_points(points, actions):
     return points
 
 
-def smooth_curve(points, nr_of_subdivisions=5):
+def smooth_curve(points, nr_of_subdivisions=5, close_loop=False):
     # based on https://stackoverflow.com/a/27650158
     nr_of_points = len(points)
-    x = np.concatenate([points[-3:-1, 0], points[:, 0], points[1:3, 0]])
-    y = np.concatenate([points[-3:-1, 1], points[:, 1], points[1:3, 1]])
+    if close_loop:
+        x = np.concatenate([points[-3:-1, :], points, points[1:3, :]])
+        ti = np.linspace(2, nr_of_points + 1, nr_of_subdivisions * nr_of_points)
+    else:
+        x = points
+        ti = np.linspace(0, nr_of_points - 1, nr_of_subdivisions * nr_of_points)
 
     t = np.arange(len(x))
-    ti = np.linspace(2, nr_of_points + 1, nr_of_subdivisions * nr_of_points)
-
-    xi = interp1d(t, x, kind='cubic')(ti)
-    yi = interp1d(t, y, kind='cubic')(ti)
-    return np.array([xi, yi]).T
+    xi = interp1d(t, x, axis=0, kind='cubic', fill_value='extrapolate')(ti)
+    return np.array(xi)
 
 
 def pygame_draw_pattern(screen, pattern, shape, tile_color=np.array([0, 0, 256.0]),
@@ -260,10 +276,11 @@ combination = [0, -3, -2]
 # combination = [-4, 1, -5, -1, -3, 5]
 size_shape = 100
 nr_of_tiles = 25
+smoothed_curves = True
 
 # Create pattern and shape
 pattern = make_pattern(combination, size=size_shape, nr_of_tiles=nr_of_tiles)
-shape = create_polygon(combination=combination, size=size_shape)
+shape = create_polygon(combination=combination, size=size_shape, smoothed_curves=smoothed_curves)
 
 # Pygame
 pygame.init()
