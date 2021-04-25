@@ -389,8 +389,8 @@ def main():
                 
                 if event.key == K_s:
                     print(f"Saving")
-                    #print(f"{pattern}")
-                    #print(f"{cattr.unstructure(pattern)}")
+                    print(f"{pattern}")
+                    print(f"{cattr.unstructure(pattern)}")
                     #print(f"{shape}")
 
                 if event.key == K_l:
