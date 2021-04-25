@@ -3,6 +3,7 @@ import copy
 import itertools
 
 import attr, cattr
+import json
 import pprint
 import pygame
 import numpy as np
@@ -157,6 +158,17 @@ class Shape(object):
                 linked_nodes.append(link.segment_linked.nodes[node_index])
         return linked_nodes
 
+class NumpyEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, np.ndarray):
+            return obj.tolist()
+        return json.JSONEncoder.default(self, obj)
+
+# class NumpyDecoder(json.JSONDecoder):
+#     def default(self, obj):
+#         if isinstance(obj, np.ndarray):
+#             return obj.tolist()
+#         return json.JSONDecoder.default(self, obj)
 
 def rotation_matrix(angle):
     c, s = np.cos(angle), np.sin(angle)
@@ -387,14 +399,24 @@ def main():
                                            radius=radius_shape, smoothed_curves=smoothed_curves)
                     selected_node = shape.get_next_node()
                 
+                # Loading and saving
+                # Based on:
+                # https://cattrs.readthedocs.io/en/latest/readme.html
+                # https://stackabuse.com/reading-and-writing-json-to-a-file-in-python/
+                # https://stackoverflow.com/questions/26646362/numpy-array-is-not-json-serializable
+
                 if event.key == K_s:
                     print(f"Saving")
-                    print(f"{pattern}")
-                    print(f"{cattr.unstructure(pattern)}")
-                    #print(f"{shape}")
-
+                    print(f"{shape}")
+                    with open('save.txt', 'w') as outfile:
+                        json.dump(cattr.unstructure(shape), outfile, cls=NumpyEncoder)
+                    
                 if event.key == K_l:
-                    print(f"Loading")                    
+                    print(f"Loading")
+                    with open('save.txt') as json_file:
+                        shape = cattr.structure(json.load(json_file), Shape)
+                    print(f"{shape}")
+
 
             elif event.type == MOUSEBUTTONDOWN and event.button == 1:
                 mouse_pos = screen_pos_to_center_pos(pygame.mouse.get_pos())
