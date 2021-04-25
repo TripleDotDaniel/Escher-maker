@@ -5,14 +5,14 @@ import matplotlib.pyplot as plt
 from matplotlib.patches import RegularPolygon, Polygon
 
 
-def find_all_patterns(nr_sides, with_mirror=True, size=1, nr_of_tiles=10):
+def find_all_patterns(nr_sides, with_mirror=True, radius=1, max_distance=3.5):
     combinations = find_combinations(nr_sides)
     if with_mirror:
         combinations = add_mirror_combinations(combinations)
 
     patterns = []
     for combination in combinations:
-        pattern = make_pattern(combination, size=size, nr_of_tiles=nr_of_tiles, error_if_not_valid=False)
+        pattern = make_pattern(combination, radius=radius, max_distance=max_distance, error_if_not_valid=False)
         if pattern:
             patterns.append(pattern)
     return patterns
@@ -70,11 +70,12 @@ def index_to_rotation(index, nr_sides):
     return 2 * math.pi / nr_sides * index
 
 
-def make_pattern(combination, nr_of_tiles=20, size=1, error_if_not_valid=True):
+def make_pattern(combination, radius=1, error_if_not_valid=True, max_distance=4.5):
     nr_sides = len(combination)
     tiles = [{"pos": np.array([0, 0]), "rotation": 0, "mirror": 1}]
     index_tile = 0
-    while index_tile < nr_of_tiles:
+    height = radius * np.cos(np.pi / nr_sides)
+    while index_tile < len(tiles):
         tile = tiles[index_tile]
         for index_side in range(nr_sides):
             direction = tile["rotation"] + index_to_rotation(index_side, nr_sides) * tile["mirror"]
@@ -85,20 +86,19 @@ def make_pattern(combination, nr_of_tiles=20, size=1, error_if_not_valid=True):
                 side_match = -combination[index_side] - 1
                 mirror = -tile["mirror"]
 
-            new_tile = {"pos": tile["pos"] + size * np.array([math.sin(direction), math.cos(direction)]),
+            new_tile = {"pos": tile["pos"] + height * np.array([math.sin(direction), math.cos(direction)]),
                         "rotation": (direction - index_to_rotation(side_match, nr_sides) * mirror + np.pi) % (2 * np.pi),
                         "mirror": mirror}
             inset = tile_in_set(tiles, new_tile)
-            if not inset[0]:
-                tiles.append(new_tile)
-                if len(tiles) == nr_of_tiles:
-                    return {"combination": combination, "tiles": tiles, "size": size}
-            elif not inset[1]:
-                if error_if_not_valid:
-                    raise RuntimeError(f"Combination {combination} does not result in a valid pattern")
-                return None
+            if np.linalg.norm(new_tile["pos"]) < max_distance * height:
+                if not inset[0]:
+                    tiles.append(new_tile)
+                elif not inset[1]:
+                    if error_if_not_valid:
+                        raise RuntimeError(f"Combination {combination} does not result in a valid pattern")
+                    return None
         index_tile += 1
-    return {"combination": combination, "tiles": tiles, "size": size}
+    return {"combination": combination, "tiles": tiles, "size": height}
 
 
 def draw_pattern(pattern):

@@ -6,7 +6,7 @@ import attr
 import pprint
 import pygame
 import numpy as np
-from pygame.locals import (K_UP, K_DOWN, K_LEFT, K_RIGHT, K_a, K_z, K_o, K_p, K_ESCAPE, K_TAB, KEYDOWN,
+from pygame.locals import (K_UP, K_DOWN, K_LEFT, K_RIGHT, K_a, K_z, K_x, K_o, K_p, K_ESCAPE, K_TAB, KEYDOWN,
                            MOUSEBUTTONDOWN, MOUSEBUTTONUP, QUIT)
 from escher_generate_pattern import find_all_patterns
 from scipy.interpolate import interp1d
@@ -73,6 +73,7 @@ class Shape(object):
     segments = attr.ib()
     links = attr.ib()
     smoothed_curves = attr.ib(default=False)
+    border_on = attr.ib(default=True)
 
     def __str__(self):
         output = ""
@@ -162,15 +163,16 @@ def rotation_matrix(angle):
     return np.array(((c, s), (-s, c)))
 
 
-def create_polygon(combination=None, size=1, nodes_per_segment=3, smoothed_curves=False):
+def create_polygon(combination=None, radius=1, nodes_per_segment=3, smoothed_curves=False):
     if combination is None:
         combination = [2, 3, 0, 1]
     nr_sides = len(combination)
+    height = radius * np.cos(np.pi / nr_sides)
     segment_per_side = 2
     nodes_per_side = (nodes_per_segment - 1) * segment_per_side  # minus 1 because of the overlapping node per segment
 
     # create nodes
-    left_corner_pos = np.array([-np.tan(np.pi / nr_sides) * size / 2, size / 2])
+    left_corner_pos = np.array([-np.tan(np.pi / nr_sides) * height / 2, height / 2])
     right_corner_pos = left_corner_pos * [-1, 1]
     # right corner is an overlapping node, added for correct spacing and then removed
     nodes_pos = np.linspace(left_corner_pos, right_corner_pos, nodes_per_side + 1)[:-1]
@@ -189,7 +191,7 @@ def create_polygon(combination=None, size=1, nodes_per_segment=3, smoothed_curve
             index_nodes = [(index_segment * (nodes_per_segment - 1) + i) % len(nodes) for i in range(nodes_per_segment)]
             segments.append(Segment(nodes=[nodes[i] for i in index_nodes],
                                     angle=angle,
-                                    dist_for_center=size / 2,
+                                    dist_for_center=height / 2,
                                     index_side=index_side))
 
     # create links
@@ -261,6 +263,8 @@ def smooth_curve(points, nr_of_subdivisions=5, close_loop=False):
 def pygame_draw_pattern(screen, pattern, shape, tile_color=np.array([0, 0, 255.0]),
                         tile_flipped_color=np.array([0, 255.0, 0])):
     shape_points = shape.get_coordinates()
+
+    tile_shapes = []
     for tile in pattern['tiles']:
         if tile["mirror"] > 0:
             color = tile_color.copy()
@@ -274,12 +278,17 @@ def pygame_draw_pattern(screen, pattern, shape, tile_color=np.array([0, 0, 255.0
                                                         ['translate', [screen.get_width() // 2,
                                                                        screen.get_height() // 2]],  # center on screen
                                                         ])
+        tile_shapes.append((shape_points_moved, color))
 
+    for tile_shape in tile_shapes:
         # Draw an anti-aliased and filled polygon.
         # Is the gfxdraw alternative of pygame.draw.polygon(screen, color, shape_points_moved)
-        pygame.gfxdraw.aapolygon(screen, shape_points_moved, color.tolist())
-        pygame.gfxdraw.filled_polygon(screen, shape_points_moved, color.tolist())
-        # pygame.draw.polygon(screen, (0, 0, 0), shape_points_moved, width=4)
+        pygame.gfxdraw.aapolygon(screen, tile_shape[0], tile_shape[1].tolist())
+        pygame.gfxdraw.filled_polygon(screen, tile_shape[0], tile_shape[1].tolist())
+
+    if shape.border_on:
+        for tile_shape in tile_shapes:
+            pygame.gfxdraw.aapolygon(screen, tile_shape[0], (255, 255, 255))
 
 
 def draw_circle(screen, color, pos, size, filled=True):
@@ -291,20 +300,21 @@ def draw_circle(screen, color, pos, size, filled=True):
 
 def main():
     # settings
-    size_shape = 100
-    nr_of_tiles = 25
+    radius_shape = 200
+    screen_size = 750
     smoothed_curves = True
 
     nr_sides_options = itertools.cycle([3, 4, 6])
     nr_sides = next(nr_sides_options)
 
     # create list with all patterns
-    all_patterns = find_all_patterns(nr_sides, size=size_shape, nr_of_tiles=nr_of_tiles)
+    max_distance = np.ceil(np.sqrt(screen_size * screen_size) / radius_shape) + 2
+    all_patterns = find_all_patterns(nr_sides, radius=radius_shape, max_distance=max_distance)
 
     # create shape for first pattern
     pattern = all_patterns[0]
 
-    shape = create_polygon(combination=pattern['combination'], size=size_shape, smoothed_curves=smoothed_curves)
+    shape = create_polygon(combination=pattern['combination'], radius=radius_shape, smoothed_curves=smoothed_curves)
 
     # Select the start node for movement
     selected_node = shape.get_next_node()
@@ -312,7 +322,7 @@ def main():
     # Pygame
     pygame.init()
     pygame.display.set_caption("Escher maker")
-    screen = pygame.display.set_mode([750, 750])
+    screen = pygame.display.set_mode([screen_size, screen_size])
     clock = pygame.time.Clock()
 
     # Set colors
@@ -363,15 +373,18 @@ def main():
                 if event.key == K_z:
                     shape.smoothed_curves = not shape.smoothed_curves
 
+                if event.key == K_x:
+                    shape.border_on = not shape.border_on
+
                 if event.key == K_o:
                     nr_sides = next(nr_sides_options)
-                    all_patterns = find_all_patterns(nr_sides, size=size_shape, nr_of_tiles=nr_of_tiles)
+                    all_patterns = find_all_patterns(nr_sides, radius=radius_shape, max_distance=max_distance)
                     pattern = all_patterns[-1]
 
                 if event.key == K_p or event.key == K_o:
                     pattern = all_patterns[(all_patterns.index(pattern) + 1) % len(all_patterns)]
                     shape = create_polygon(combination=pattern['combination'],
-                                           size=size_shape, smoothed_curves=smoothed_curves)
+                                           radius=radius_shape, smoothed_curves=smoothed_curves)
                     selected_node = shape.get_next_node()
 
             elif event.type == MOUSEBUTTONDOWN and event.button == 1:
@@ -409,26 +422,32 @@ def main():
         screen.fill(white)
 
         pygame_draw_pattern(screen, pattern, shape)
+        draw_circle(screen, red, center_pos_to_screen_pos(selected_node.pos), 7)
         for node_to_draw in shape.get_nodes():
             if node_to_draw.movable:
                 color = greywhite
             else:
                 color = greybrown
             draw_circle(screen, color, center_pos_to_screen_pos(node_to_draw.pos), 5)
-        draw_circle(screen, red, center_pos_to_screen_pos(selected_node.pos), 7)
+
         for linked_node in shape.get_linked_nodes(selected_node):
             draw_circle(screen, greywhite, center_pos_to_screen_pos(linked_node.pos), 7)
 
         draw_text("ESCHER MAKER", (10, 10), size=20)
+        pygame.draw.rect(screen, greywhite, (10, 40, 300, 125), border_radius=5)
         draw_text(["Controls:",
                    "- Tab key: select node",
                    "- Arrow key: move node",
                    "- A-key: add node",
                    "- Z-key: straight/smooth curves",
+                   "- X-key: border on/off",
                    "- P-key: next pattern",
                    "- O-key: change number of sides"],
-                  (10, 40))
-        draw_text([f"Combination: {pattern['combination']}"],
+                  (20, 45))
+        draw_text([f"Info:",
+                   f"Number of sides: {nr_sides}",
+                   f"Pattern {all_patterns.index(pattern) + 1} of {len(all_patterns)}",
+                   f"Combination: {pattern['combination']}"],
                   (screen.get_width()-250, 40))
         pygame.display.update()
 
