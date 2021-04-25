@@ -5,11 +5,17 @@ import matplotlib.pyplot as plt
 from matplotlib.patches import RegularPolygon, Polygon
 
 
-def find_all_combinations(nr_sides, with_mirror=True):
+def find_all_patterns(nr_sides, with_mirror=True, size=1, nr_of_tiles=10):
     combinations = find_combinations(nr_sides)
     if with_mirror:
         combinations = add_mirror_combinations(combinations)
-    return combinations
+
+    patterns = []
+    for combination in combinations:
+        pattern = make_pattern(combination, size=size, nr_of_tiles=nr_of_tiles, error_if_not_valid=False)
+        if pattern:
+            patterns.append(pattern)
+    return patterns
 
 
 def find_combinations(nr_sides, combination=None):
@@ -64,7 +70,7 @@ def index_to_rotation(index, nr_sides):
     return 2 * math.pi / nr_sides * index
 
 
-def make_pattern(combination, nr_of_tiles=20, size=1):
+def make_pattern(combination, nr_of_tiles=20, size=1, error_if_not_valid=True):
     nr_sides = len(combination)
     tiles = [{"pos": np.array([0, 0]), "rotation": 0, "mirror": 1}]
     index_tile = 0
@@ -88,7 +94,9 @@ def make_pattern(combination, nr_of_tiles=20, size=1):
                 if len(tiles) == nr_of_tiles:
                     return {"combination": combination, "tiles": tiles, "size": size}
             elif not inset[1]:
-                raise RuntimeError(f"Combination {combination} does not result in a valid pattern")
+                if error_if_not_valid:
+                    raise RuntimeError(f"Combination {combination} does not result in a valid pattern")
+                return None
         index_tile += 1
     return {"combination": combination, "tiles": tiles, "size": size}
 

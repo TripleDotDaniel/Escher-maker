@@ -1,12 +1,14 @@
 # pip3 install attrs
 import copy
+import itertools
+
 import attr
 import pprint
 import pygame
 import numpy as np
-from pygame.locals import (K_UP, K_DOWN, K_LEFT, K_RIGHT, K_a, K_z, K_ESCAPE, K_TAB, KEYDOWN,
+from pygame.locals import (K_UP, K_DOWN, K_LEFT, K_RIGHT, K_a, K_z, K_o, K_p, K_ESCAPE, K_TAB, KEYDOWN,
                            MOUSEBUTTONDOWN, MOUSEBUTTONUP, QUIT)
-from escher_generate_pattern import find_all_combinations, make_pattern
+from escher_generate_pattern import find_all_patterns
 from scipy.interpolate import interp1d
 from pygame import gfxdraw
 
@@ -101,7 +103,6 @@ class Shape(object):
             nodes0 = self.segments[2 * index_side].nodes
             nodes1 = self.segments[2 * index_side + 1].nodes
             nodes_side = nodes0 + nodes1[1:]
-            print()
             smooth_coordinates.append(smooth_curve(np.array([node.pos for node in nodes_side])))
         return np.concatenate(smooth_coordinates)
 
@@ -257,8 +258,8 @@ def smooth_curve(points, nr_of_subdivisions=5, close_loop=False):
     return np.array(xi)
 
 
-def pygame_draw_pattern(screen, pattern, shape, tile_color=np.array([0, 0, 256.0]),
-                        tile_flipped_color=np.array([0, 256.0, 0])):
+def pygame_draw_pattern(screen, pattern, shape, tile_color=np.array([0, 0, 255.0]),
+                        tile_flipped_color=np.array([0, 255.0, 0])):
     shape_points = shape.get_coordinates()
     for tile in pattern['tiles']:
         if tile["mirror"] > 0:
@@ -278,6 +279,7 @@ def pygame_draw_pattern(screen, pattern, shape, tile_color=np.array([0, 0, 256.0
         # Is the gfxdraw alternative of pygame.draw.polygon(screen, color, shape_points_moved)
         pygame.gfxdraw.aapolygon(screen, shape_points_moved, color.tolist())
         pygame.gfxdraw.filled_polygon(screen, shape_points_moved, color.tolist())
+        # pygame.draw.polygon(screen, (0, 0, 0), shape_points_moved, width=4)
 
 
 def draw_circle(screen, color, pos, size, filled=True):
@@ -288,20 +290,24 @@ def draw_circle(screen, color, pos, size, filled=True):
 
 
 def main():
-    # Settings
-    # combination = [1, 0, 2]
-    combination = [0, -3, -2]
-    # combination = [2, 1, 0, 3]
-    # combination = [0, 1, -4, -3]
-    # combination = [5, 2, 1, 4, 3, 0]
-    # combination = [-4, 1, -5, -1, -3, 5]
+    # settings
     size_shape = 100
     nr_of_tiles = 25
     smoothed_curves = True
 
-    # Create pattern and shape
-    pattern = make_pattern(combination, size=size_shape, nr_of_tiles=nr_of_tiles)
-    shape = create_polygon(combination=combination, size=size_shape, smoothed_curves=smoothed_curves)
+    nr_sides_options = itertools.cycle([3, 4, 6])
+    nr_sides = next(nr_sides_options)
+
+    # create list with all patterns
+    all_patterns = find_all_patterns(nr_sides, size=size_shape, nr_of_tiles=nr_of_tiles)
+
+    # create shape for first pattern
+    pattern = all_patterns[0]
+
+    shape = create_polygon(combination=pattern['combination'], size=size_shape, smoothed_curves=smoothed_curves)
+
+    # Select the start node for movement
+    selected_node = shape.get_next_node()
 
     # Pygame
     pygame.init()
@@ -326,9 +332,6 @@ def main():
 
     def screen_pos_to_center_pos(pos):
         return np.array([pos[0] - screen.get_width() // 2, -pos[1] + screen.get_height() // 2])
-
-    # Select the start node for movement
-    selected_node = shape.get_next_node()
 
     # Set the texts
     def draw_text(text, pos, size=14):
@@ -359,6 +362,17 @@ def main():
 
                 if event.key == K_z:
                     shape.smoothed_curves = not shape.smoothed_curves
+
+                if event.key == K_o:
+                    nr_sides = next(nr_sides_options)
+                    all_patterns = find_all_patterns(nr_sides, size=size_shape, nr_of_tiles=nr_of_tiles)
+                    pattern = all_patterns[-1]
+
+                if event.key == K_p or event.key == K_o:
+                    pattern = all_patterns[(all_patterns.index(pattern) + 1) % len(all_patterns)]
+                    shape = create_polygon(combination=pattern['combination'],
+                                           size=size_shape, smoothed_curves=smoothed_curves)
+                    selected_node = shape.get_next_node()
 
             elif event.type == MOUSEBUTTONDOWN and event.button == 1:
                 mouse_pos = screen_pos_to_center_pos(pygame.mouse.get_pos())
@@ -407,12 +421,15 @@ def main():
 
         draw_text("ESCHER MAKER", (10, 10), size=20)
         draw_text(["Controls:",
-                   "- Select node with tab.",
-                   "- Move node with arrows.",
-                   "- Add node with a.",
-                   "- Switch straight/smooth curves with z."],
+                   "- Tab key: select node",
+                   "- Arrow key: move node",
+                   "- A-key: add node",
+                   "- Z-key: straight/smooth curves",
+                   "- P-key: next pattern",
+                   "- O-key: change number of sides"],
                   (10, 40))
-
+        draw_text([f"Combination: {pattern['combination']}"],
+                  (screen.get_width()-250, 40))
         pygame.display.update()
 
         clock.tick(60)
