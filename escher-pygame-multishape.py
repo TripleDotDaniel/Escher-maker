@@ -3,12 +3,12 @@ import copy
 import attr
 import pprint
 import pygame
-import time
 import numpy as np
-from pygame.locals import (K_UP, K_DOWN, K_LEFT, K_RIGHT, K_a, K_ESCAPE, K_TAB, KEYDOWN,
+from pygame.locals import (K_UP, K_DOWN, K_LEFT, K_RIGHT, K_a, K_z, K_ESCAPE, K_TAB, KEYDOWN,
                            MOUSEBUTTONDOWN, MOUSEBUTTONUP, QUIT)
-from escher_generate_pattern import find_all_combinations, make_pattern, draw_pattern, move_shape
+from escher_generate_pattern import find_all_combinations, make_pattern
 from scipy.interpolate import interp1d
+from pygame import gfxdraw
 
 
 # Classes (frozen means immutable objects)
@@ -124,7 +124,10 @@ class Shape(object):
                 node_index = segment.nodes.index(node)
                 if node_index < len(
                         segment.nodes) - 1:  # don't match last node because it overlaps with the next segment
-                    segment.nodes.insert(node_index, copy.deepcopy(node))
+                    new_node = copy.deepcopy(node)
+                    # place new node in between current and next node
+                    new_node.pos = (segment.nodes[node_index].pos + segment.nodes[node_index + 1].pos) / 2
+                    segment.nodes.insert(node_index + 1, new_node)
                     break
 
         # update linked segment(s)
@@ -141,6 +144,16 @@ class Shape(object):
             return movable_nodes[(movable_nodes.index(node) + 1) % len(movable_nodes)]
         else:
             return movable_nodes[0]
+
+    def get_linked_nodes(self, node):
+        linked_nodes = []
+        for link in self.links:
+            if node in link.segment_source.nodes:
+                node_index = link.segment_source.nodes.index(node)
+                if link.flip_x:
+                    node_index = len(link.segment_source.nodes) - 1 - node_index
+                linked_nodes.append(link.segment_linked.nodes[node_index])
+        return linked_nodes
 
 
 def rotation_matrix(angle):
@@ -260,122 +273,152 @@ def pygame_draw_pattern(screen, pattern, shape, tile_color=np.array([0, 0, 256.0
                                                         ['translate', [screen.get_width() // 2,
                                                                        screen.get_height() // 2]],  # center on screen
                                                         ])
-        pygame.draw.polygon(screen, color, shape_points_moved)
+
+        # Draw an anti-aliased and filled polygon.
+        # Is the gfxdraw alternative of pygame.draw.polygon(screen, color, shape_points_moved)
+        pygame.gfxdraw.aapolygon(screen, shape_points_moved, color.tolist())
+        pygame.gfxdraw.filled_polygon(screen, shape_points_moved, color.tolist())
 
 
-def screen_to_coord(pos_screen, screen):
-    return np.array([pos_screen[0] - screen.get_width() // 2, -pos_screen[1] + screen.get_height() // 2])
+def draw_circle(screen, color, pos, size, filled=True):
+    # Is the gfxdraw alternative of pygame.draw.circle(screen, color, pos, size)
+    pygame.gfxdraw.aacircle(screen, int(pos[0]), int(pos[1]), size, color)
+    if filled:
+        pygame.gfxdraw.filled_circle(screen, int(pos[0]), int(pos[1]), size, color)
 
 
-# Settings
-# combination = [1, 0, 2]
-combination = [0, -3, -2]
-# combination = [2, 1, 0, 3]
-# combination = [0, 1, -4, -3]
-# combination = [5, 2, 1, 4, 3, 0]
-# combination = [-4, 1, -5, -1, -3, 5]
-size_shape = 100
-nr_of_tiles = 25
-smoothed_curves = True
+def main():
+    # Settings
+    # combination = [1, 0, 2]
+    combination = [0, -3, -2]
+    # combination = [2, 1, 0, 3]
+    # combination = [0, 1, -4, -3]
+    # combination = [5, 2, 1, 4, 3, 0]
+    # combination = [-4, 1, -5, -1, -3, 5]
+    size_shape = 100
+    nr_of_tiles = 25
+    smoothed_curves = True
 
-# Create pattern and shape
-pattern = make_pattern(combination, size=size_shape, nr_of_tiles=nr_of_tiles)
-shape = create_polygon(combination=combination, size=size_shape, smoothed_curves=smoothed_curves)
+    # Create pattern and shape
+    pattern = make_pattern(combination, size=size_shape, nr_of_tiles=nr_of_tiles)
+    shape = create_polygon(combination=combination, size=size_shape, smoothed_curves=smoothed_curves)
 
-# Pygame
-pygame.init()
-screen = pygame.display.set_mode([750, 750])
-clock = pygame.time.Clock()
+    # Pygame
+    pygame.init()
+    pygame.display.set_caption("Escher maker")
+    screen = pygame.display.set_mode([750, 750])
+    clock = pygame.time.Clock()
 
-# Set colors
-black = (0, 0, 0)
-white = (255, 255, 255)
-red = (255, 25, 55)
-lightgreenblue = (182, 220, 233)
-darkgreenblue = (48, 124, 145)
-greybrown = (139, 146, 154)
-greywhite = (229, 227, 228)
-brown = (123, 92, 82)
-color1 = lightgreenblue
-color2 = darkgreenblue
+    # Set colors
+    # black = (0, 0, 0)
+    white = (255, 255, 255)
+    red = (255, 25, 55)
+    # darkred = (255, 200, 200)
+    # lightgreenblue = (182, 220, 233)
+    # darkgreenblue = (48, 124, 145)
+    greybrown = (139, 146, 154)
+    greywhite = (229, 227, 228)
+    brown = (123, 92, 82)
 
-# Set origin (0, 0) in the center of the screen instead of top-left and flip direction of y-axis
-center_origin = lambda p, center: (
-    center[0] + p[0] + screen.get_width() // 2, center[1] - p[1] + screen.get_height() // 2)
-center_origins = lambda l, center: [center_origin(coordinates, center) for coordinates in l]
+    # Set origin (0, 0) in the center of the screen instead of top-left and flip direction of y-axis
+    def center_pos_to_screen_pos(pos):
+        return pos[0] + screen.get_width() // 2, - pos[1] + screen.get_height() // 2
 
-# Select the start node for movement
-selected_node = shape.get_next_node()
+    def screen_pos_to_center_pos(pos):
+        return np.array([pos[0] - screen.get_width() // 2, -pos[1] + screen.get_height() // 2])
 
-# Set the texts
-font = pygame.font.Font(pygame.font.get_default_font(), 14)
-draw_text = lambda text, pos: screen.blit(font.render(text, True, brown, greywhite), pos)
+    # Select the start node for movement
+    selected_node = shape.get_next_node()
 
-# Start loop
-running = True
-follow_mouse = False
-while running:
-    # Single key-press
-    for event in pygame.event.get():
-        if event.type == KEYDOWN:
-            if event.key == K_ESCAPE:
+    # Set the texts
+    def draw_text(text, pos, size=14):
+        if isinstance(text, list):
+            for i, t in enumerate(text):
+                draw_text(t, (pos[0], pos[1] + size * i), size)
+            return
+
+        font = pygame.font.Font(pygame.font.get_default_font(), size)
+        screen.blit(font.render(text, True, brown, greywhite), pos)
+
+    # Start loop
+    running = True
+    follow_mouse = False
+    while running:
+        # Single key-press
+        for event in pygame.event.get():
+            if event.type == KEYDOWN:
+                if event.key == K_ESCAPE:
+                    running = False
+
+                if event.key == K_TAB:
+                    selected_node = shape.get_next_node(selected_node)
+
+                if event.key == K_a:
+                    shape.add_node(selected_node)
+                    selected_node = shape.get_next_node(selected_node)
+
+                if event.key == K_z:
+                    shape.smoothed_curves = not shape.smoothed_curves
+
+            elif event.type == MOUSEBUTTONDOWN and event.button == 1:
+                mouse_pos = screen_pos_to_center_pos(pygame.mouse.get_pos())
+                for node in shape.get_movable_nodes():
+                    if np.linalg.norm(node.pos - mouse_pos) < 10:
+                        selected_node = node
+                        follow_mouse = True
+
+            elif event.type == MOUSEBUTTONUP and event.button == 1:
+                follow_mouse = False
+
+            elif event.type == QUIT:
                 running = False
 
-            if event.key == K_TAB:
-                selected_node = shape.get_next_node(selected_node)
+        # Continuous key-press
+        pressed_keys = pygame.key.get_pressed()
 
-            if event.key == K_a:
-                shape.add_node(selected_node)
+        if pressed_keys[K_UP]:
+            shape.move_node(selected_node, movement=[0, 5])
 
-        elif event.type == MOUSEBUTTONDOWN and event.button == 1:
-            mouse_pos = screen_to_coord(pygame.mouse.get_pos(), screen)
-            for node in shape.get_movable_nodes():
-                if np.linalg.norm(node.pos - mouse_pos) < 10:
-                    selected_node = node
-                    follow_mouse = True
+        if pressed_keys[K_DOWN]:
+            shape.move_node(selected_node, movement=[0, -5])
 
-        elif event.type == MOUSEBUTTONUP and event.button == 1:
-            follow_mouse = False
+        if pressed_keys[K_LEFT]:
+            shape.move_node(selected_node, movement=[-5, 0])
 
-        elif event.type == QUIT:
-            running = False
+        if pressed_keys[K_RIGHT]:
+            shape.move_node(selected_node, movement=[5, 0])
 
-    # Continuous key-press
-    pressed_keys = pygame.key.get_pressed()
+        if follow_mouse:
+            mouse_pos = screen_pos_to_center_pos(pygame.mouse.get_pos())
+            shape.move_node(selected_node, position=mouse_pos)
 
-    if pressed_keys[K_UP]:
-        shape.move_node(selected_node, movement=[0, 5])
+        screen.fill(white)
 
-    if pressed_keys[K_DOWN]:
-        shape.move_node(selected_node, movement=[0, -5])
+        pygame_draw_pattern(screen, pattern, shape)
+        for node_to_draw in shape.get_nodes():
+            if node_to_draw.movable:
+                color = greywhite
+            else:
+                color = greybrown
+            draw_circle(screen, color, center_pos_to_screen_pos(node_to_draw.pos), 5)
+        draw_circle(screen, red, center_pos_to_screen_pos(selected_node.pos), 7)
+        for linked_node in shape.get_linked_nodes(selected_node):
+            draw_circle(screen, greywhite, center_pos_to_screen_pos(linked_node.pos), 7)
 
-    if pressed_keys[K_LEFT]:
-        shape.move_node(selected_node, movement=[-5, 0])
+        draw_text("ESCHER MAKER", (10, 10), size=20)
+        draw_text(["Controls:",
+                   "- Select node with tab.",
+                   "- Move node with arrows.",
+                   "- Add node with a.",
+                   "- Switch straight/smooth curves with z."],
+                  (10, 40))
 
-    if pressed_keys[K_RIGHT]:
-        shape.move_node(selected_node, movement=[5, 0])
+        pygame.display.update()
 
-    if follow_mouse:
-        mouse_pos = screen_to_coord(pygame.mouse.get_pos(), screen)
-        shape.move_node(selected_node, position=mouse_pos)
+        clock.tick(60)
 
-    screen.fill(white)
+    pygame.quit()
 
-    pygame_draw_pattern(screen, pattern, shape)
-    for node_to_draw in shape.get_nodes():
-        if node_to_draw.movable:
-            color = greywhite
-        else:
-            color = greybrown
-        pygame.draw.circle(screen, color, center_origin(node_to_draw.pos, (0, 0)), 5)
-    pygame.draw.circle(screen, red, center_origin(selected_node.pos, (0, 0)), 7)
 
-    draw_text("ESCHER MAKER", (10, 10))
-    draw_text("Select with tab. Move with arrows. Add with a", (10, 30))
-    draw_text(f"Position: ({selected_node.pos})", (185, 50))
-
-    pygame.display.update()
-
-    clock.tick(60)
-
-pygame.quit()
+if __name__ == "__main__":
+    main()
