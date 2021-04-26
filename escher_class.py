@@ -238,7 +238,7 @@ def move_points(points, actions):
         elif action[0] == 'rotate':
             points = rotation_matrix(action[1]).dot(points.T).T
         elif action[0] == 'scale':
-            points *= action[1]
+            points *= np.array(action[1])
         elif action[0] == 'smooth':
             points = smooth_curve(points, nr_of_subdivisions=action[1])
         else:

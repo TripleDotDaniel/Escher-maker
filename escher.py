@@ -5,8 +5,8 @@ import cattr
 import numpy as np
 import pygame
 from pygame import gfxdraw
-from pygame.locals import (K_UP, K_DOWN, K_LEFT, K_RIGHT, K_a, K_z, K_x, K_o, K_p, K_s, K_l, K_ESCAPE, K_TAB, KEYDOWN,
-                           K_LEFTBRACKET, K_RIGHTBRACKET, MOUSEBUTTONDOWN, MOUSEBUTTONUP, QUIT)
+from pygame.locals import (K_UP, K_DOWN, K_LEFT, K_RIGHT, K_a, K_z, K_x, K_o, K_p, K_s, K_l, K_q, K_w, K_ESCAPE, K_TAB,
+                           KEYDOWN, K_LEFTBRACKET, K_RIGHTBRACKET, MOUSEBUTTONDOWN, MOUSEBUTTONUP, QUIT)
 
 from escher_class import Pattern, move_points, get_all_patterns
 
@@ -25,15 +25,14 @@ class NumpyEncoder(json.JSONEncoder):
 #         return json.JSONDecoder.default(self, obj)
 
 
-def pygame_draw_pattern(screen, pattern, draw_settings, tile_color=np.array([0, 0, 255.0]),
-                        tile_flipped_color=np.array([0, 255.0, 0])):
+def pygame_draw_pattern(screen, pattern, draw_settings):
     tile_shapes = []
     shape_points = pattern.shape.get_coordinates(smoothed_curves=draw_settings['smoothed_curves'])
     for tile in pattern.tiles:
         if tile.mirror > 0:
-            color = tile_color.copy()
+            color = draw_settings['tile_color'].copy()
         else:
-            color = tile_flipped_color.copy()
+            color = draw_settings['tile_flipped_color'].copy()
         color *= (tile.rot + 1) / (2 * np.pi + 1)
         shape_points_moved = tile.move_coordinates(shape_points)
         shape_points_moved = pattern_pos_to_screen_pos(shape_points_moved, draw_settings)
@@ -65,9 +64,10 @@ def pattern_pos_to_screen_pos(pos, draw_settings):
 
 
 def screen_pos_to_pattern_pos(pos, draw_settings):
-    return move_points(pos, [['translate', [-draw_settings['screen_size'][0] // 2,
-                                            -draw_settings['screen_size'][1] // 2]],  # center on screen
-                             ['scale', [1 / draw_settings['shape_radius'], -1 / draw_settings['shape_radius']]]
+    return move_points(pos, [['translate', np.array([-draw_settings['screen_size'][0] // 2,
+                                                     -draw_settings['screen_size'][1] // 2], dtype=np.float32)],
+                             ['scale', np.array([1 / draw_settings['shape_radius'],
+                                                 -1 / draw_settings['shape_radius']], dtype=np.float32)]
                              ])
 
 
@@ -77,7 +77,9 @@ def main():
         'shape_radius': 200,
         'screen_size': [750, 750],
         'smoothed_curves': True,
-        'borders': True
+        'borders': True,
+        'tile_color': np.array([0, 0, 255.0]),
+        'tile_flipped_color': np.array([0, 255.0, 0]),
     }
 
     # create list with all patterns
@@ -144,6 +146,12 @@ def main():
                 if event.key == K_x:
                     draw_settings['borders'] = not draw_settings['borders']
 
+                if event.key == K_q:
+                    draw_settings['shape_radius'] *= 1/1.1
+
+                if event.key == K_w:
+                    draw_settings['shape_radius'] *= 1.1
+
                 if event.key == K_o:
                     pattern_index = (pattern_index - 1) % len(all_patterns[nr_sides_index])
 
@@ -181,9 +189,9 @@ def main():
                     print(f"{pattern}")
 
             elif event.type == MOUSEBUTTONDOWN and event.button == 1:
-                mouse_pos = screen_pos_to_pattern_pos(pygame.mouse.get_pos(), draw_settings)
+                mouse_pos = pygame.mouse.get_pos()
                 for node in pattern.shape.get_movable_nodes():
-                    if np.linalg.norm(node.pos - mouse_pos) < 10:
+                    if np.linalg.norm(pattern_pos_to_screen_pos(node.pos, draw_settings) - mouse_pos) < 10:
                         selected_node = node
                         follow_mouse = True
 
@@ -227,13 +235,14 @@ def main():
             draw_circle(screen, greywhite, pattern_pos_to_screen_pos(linked_node.pos, draw_settings), 7)
 
         draw_text("ESCHER MAKER", (10, 10), size=20)
-        pygame.draw.rect(screen, greywhite, (10, 40, 300, 125), border_radius=5)
+        pygame.draw.rect(screen, greywhite, (10, 40, 300, 140), border_radius=5)
         draw_text(["Controls:",
                    "- Tab key: select node",
                    "- Arrow key: move node",
                    "- A-key: add node",
                    "- Z-key: straight/smooth curves",
                    "- X-key: border on/off",
+                   "- Q/W-keys: zoom in/out",
                    "- O/P-keys: change pattern",
                    "- []-keys: change number of sides"],
                   (20, 45))
