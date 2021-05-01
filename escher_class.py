@@ -1,5 +1,6 @@
 import copy
 import itertools
+from typing import List
 
 import attr
 import numpy as np
@@ -9,7 +10,7 @@ from scipy.interpolate import interp1d
 @attr.s(eq=False)
 class Node(object):
     pos = attr.ib(default=np.array([0, 0]))
-    movable = attr.ib(default=True)
+    movable: bool = attr.ib(default=True)
 
     def move(self, movement=None, position=None):
         if position is not None:
@@ -23,17 +24,17 @@ class Node(object):
 
 @attr.s()
 class Segment(object):
-    nodes = attr.ib()
-    angle = attr.ib(default=0)
-    dist_for_center = attr.ib(default=1)
+    nodes: List[Node] = attr.ib()
+    angle: float = attr.ib(default=0)
+    dist_for_center: float = attr.ib(default=1)
 
 
 @attr.s()
 class Link(object):
-    segment_source = attr.ib(validator=attr.validators.instance_of(Segment))
-    segment_linked = attr.ib(validator=attr.validators.instance_of(Segment))
-    flip_x = attr.ib(default=False)
-    flip_y = attr.ib(default=False)
+    segment_source: Segment = attr.ib(validator=attr.validators.instance_of(Segment))
+    segment_linked: Segment = attr.ib(validator=attr.validators.instance_of(Segment))
+    flip_x: bool = attr.ib(default=False)
+    flip_y: bool = attr.ib(default=False)
 
     def update_linked_segment(self, shape):
         self.segment_linked.nodes = copy.deepcopy(self.segment_source.nodes)
@@ -59,8 +60,8 @@ class Link(object):
 
 @attr.s()
 class Shape(object):
-    segments = attr.ib()
-    links = attr.ib()
+    segments: List[Segment] = attr.ib()
+    links: List[Link] = attr.ib()
 
     def __str__(self):
         output = ""
@@ -145,8 +146,8 @@ class Shape(object):
 @attr.s()
 class Tile(object):
     pos = attr.ib(default=np.array([0, 0]))
-    rot = attr.ib(default=0)
-    mirror = attr.ib(default=1)
+    rot: float = attr.ib(default=0)
+    mirror: int = attr.ib(default=1)
 
     def move_coordinates(self, coordinates):
         return move_points(coordinates,
@@ -157,9 +158,9 @@ class Tile(object):
 
 @attr.s(eq=False)
 class Pattern(object):
-    tiles = attr.ib()
+    tiles: List[Tile] = attr.ib()
     combination = attr.ib()
-    shape = attr.ib()
+    shape: Shape = attr.ib()
 
     def __eq__(self, other):
         return id(self) == id(other)
@@ -174,7 +175,7 @@ def create_shape(combination=None, radius=1, nodes_per_segment=3):
     nodes_per_side = (nodes_per_segment - 1) * segment_per_side  # minus 1 because of the overlapping node per segment
 
     # create nodes
-    left_corner_pos = np.array([-np.tan(np.pi / nr_sides) * height / 2, height / 2])
+    left_corner_pos = np.array([-np.tan(np.pi / nr_sides) * height, height])
     right_corner_pos = left_corner_pos * [-1, 1]
     # right corner is an overlapping node, added for correct spacing and then removed
     nodes_pos = np.linspace(left_corner_pos, right_corner_pos, nodes_per_side + 1)[:-1]
@@ -183,7 +184,6 @@ def create_shape(combination=None, radius=1, nodes_per_segment=3):
         angle = 2 * np.pi / nr_sides * index_side
         for i, node_pos in enumerate(nodes_pos):
             nodes.append(Node(pos=rotation_matrix(angle).dot(node_pos), movable=(i != 0)))
-
     # create segments
     segments = []
     for index_side in range(nr_sides):
@@ -193,7 +193,7 @@ def create_shape(combination=None, radius=1, nodes_per_segment=3):
             index_nodes = [(index_segment * (nodes_per_segment - 1) + i) % len(nodes) for i in range(nodes_per_segment)]
             segments.append(Segment(nodes=[nodes[i] for i in index_nodes],
                                     angle=angle,
-                                    dist_for_center=height / 2))
+                                    dist_for_center=height))
 
     # create links
     links = []
@@ -348,7 +348,7 @@ def make_pattern(combination, radius=1, error_if_not_valid=True, max_distance=4.
                 side_match = -combination[index_side] - 1
                 mirror = -tile.mirror
 
-            new_tile = Tile(pos=tile.pos + height * np.array([np.sin(direction), np.cos(direction)]),
+            new_tile = Tile(pos=tile.pos + 2 * height * np.array([np.sin(direction), np.cos(direction)]),
                             rot=(direction - index_to_rotation(side_match, nr_sides) * mirror + np.pi) % (2 * np.pi),
                             mirror=mirror)
             inset = tile_in_set(tiles, new_tile)
