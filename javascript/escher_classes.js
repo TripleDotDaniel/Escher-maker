@@ -231,15 +231,16 @@ class Tile {
 }
 
 class Pattern {
-  constructor(tiles, combination, shape, name=""){
+  constructor(tiles, combination, movable_corner, shape, name=""){
     this.tiles = tiles;
     this.combination = combination;
     this.shape = shape;
+    this.movable_corner = movable_corner;
     this.name = name;
   }
 }
-    
-    
+
+
 function create_shape(combination, movable_corner=true) {
   let radius = 1;
   let nodes_per_segment = 3;
@@ -256,7 +257,7 @@ function create_shape(combination, movable_corner=true) {
   // right corner is an overlapping node, added for correct spacing and then removed
   let nodes_pos = linspace_vector(left_corner_pos, right_corner_pos, nodes_per_side + 1);
   nodes_pos.pop();
-  
+
   let nodes = [];
   for (let index_side = 0; index_side < nr_sides; index_side++) {
     let angle = 2 * PI / nr_sides * index_side;
@@ -268,7 +269,7 @@ function create_shape(combination, movable_corner=true) {
       nodes[nodes.length-nodes_pos.length].movable = false;
     }
   }
-    
+
   // create segments
   let segments = [];
   for (let index_side = 0; index_side < nr_sides; index_side++) {
@@ -320,7 +321,7 @@ function create_shape(combination, movable_corner=true) {
     }
   }
   let shape = new Shape(segments=segments, links=links);
-  return shape; 
+  return shape;
 }
 
 function linspace(startValue, stopValue, cardinality) {
@@ -330,8 +331,8 @@ function linspace(startValue, stopValue, cardinality) {
     arr.push(startValue + (step * i));
   }
   return arr;
-}    
-    
+}
+
 function linspace_vector(v0, v1, N) {
   vs = [];
   for (let n=0; n<N; n++) {
@@ -351,11 +352,11 @@ function tile_in_set(tiles, new_tile, eps=1e-5) {
       }
       return [true, false];
     }
-            
+
   }
   return [false, false]
 }
-    
+
 function index_to_rotation(index, nr_sides) {
     return 2 * PI / nr_sides * index;
 }
@@ -394,7 +395,7 @@ function make_pattern(combination, max_distance=4.5, movable_corner=true) {
     }
     index_tile += 1;
   }
-  let pattern = new Pattern(tiles, combination, shape);
+  let pattern = new Pattern(tiles, combination, movable_corner, shape);
   return pattern;
 }
     

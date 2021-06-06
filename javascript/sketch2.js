@@ -1,28 +1,6 @@
 let pattern;
-let patterns = [];
 let active_node;
 let track_mouse = false;
-
-let combinations = [
-  [[0, 1, 2], false],
-  [[0, 2, 1], false],
-  [[0, -3, -2], false],
-  [[0, 1, 2, 3], true],
-  [[0, 3, 2, 1], false],
-  [[1, 0, 3, 2], false],
-  [[2, 3, 0, 1], true],
-  [[0, 1, -4, -3], true],
-  [[0, -4, 2, -2], true],
-  [[-2, -1, -4, -3], true],
-  [[2, -4, 0, -2], true],
-  [[-3, -4, -1, -2], false],
-  [[0, 1, 5, 3, 4, 2], true],
-  [[1, 0, 3, 2, 5, 4], false],
-  [[3, 4, 5, 0, 1, 2], true],
-  [[0, 1, 5, -5, -4, 2], true],
-  [[0, -4, -6, -2, 4, -3], true],
-  [[-2, -1, 5, -5, -4, 2], true],
-];
 
 let settings = {
   shape_radius: 80,
@@ -34,75 +12,55 @@ let settings = {
   borders: true,
   show_nodes: true,
   background_color: [220, 220, 220],
-  tile_color: [0, 0, 255.0],
-  tile_flipped_color: [0, 255.0, 0],
+  tile_color: [144, 191, 42],
+  tile_flipped_color: [3, 120, 166],
   border_color: [255, 255, 255],
   movable_node_color: [255, 255, 255],
   unmovable_node_color: [100, 100, 100],
   active_node_color: [255.0, 0, 0],
   linked_node_color: [255.0, 100, 100],
-  pattern_index: 0,
 };
 let button_functions = {
-  save_figure: save_figure,
+  export_figure: export_figure,
   reset_pattern: reset_pattern,
   save_pattern: save_pattern,
   load_pattern: load_pattern,
 };
 
-function setup() {
-  let i = 0;
-  let patterns_list = {};
-  for (let combination of combinations) {
-    pattern = make_pattern(combination[0], 20, combination[1]);
-    pattern.name = `Pattern ${i + 1} (${combination[0].length}-sided)`;
-    patterns_list[pattern.name] = i;
-    i++;
-    patterns.push(pattern);
+function preload() {
+  let params = getURLParams();
+  if (params.pattern == null) {
+    params.pattern = 'base_pattern_2';
   }
+  print(params.pattern)
+  pattern = load_pattern(params.pattern + '.json');
+}
+
+function setup() {
+  active_node = pattern.shape.get_next_node([]);
+
 
   // create gui (dat.gui)
   let gui = new dat.GUI({ name: "EscherMaker" });
   gui.useLocalStorage = true;
-  //gui.close();
-
-  gui
-    .add(settings, "pattern_index", patterns_list)
-    .name("Pattern")
-    .onChange(select_pattern)
-    .listen();
   gui.add(button_functions, "reset_pattern").name("Reset pattern");
   gui.add(button_functions, "save_pattern").name("Save pattern");
   gui.add(button_functions, "load_pattern").name("Load pattern");
-  gui.add(button_functions, "save_figure").name("Export figure");
+  gui.add(button_functions, "export_figure").name("Export figure");
 
   var f_display = gui.addFolder("Display");
-  f_display
-    .add(settings, "projection", ["Spherical", "Flat"])
-    .name("Projection");
-  f_display.add(settings, "smoothed_curves").name("Smooth curves");
-  f_display.add(settings, "borders").name("Show borders");
-  f_display.add(settings, "show_nodes").name("Show nodes");
-  f_display
-    .add(settings, "shape_radius")
-    .min(10)
-    .max(200)
-    .name("Zoom")
-    .listen();
-  f_display
-    .add(settings, "rotation")
-    .min(-180)
-    .max(180)
-    .name("Rotate")
-    .listen();
-  //f_display.open();
+  f_display.add(settings, "projection", ["Spherical", "Flat"]).name("Projection").listen();
+  f_display.add(settings, "smoothed_curves").name("Smooth curves").listen();
+  f_display.add(settings, "borders").name("Show borders").listen();
+  f_display.add(settings, "show_nodes").name("Show nodes").listen();
+  f_display.add(settings, "shape_radius").min(10).max(200).name("Zoom").listen();
+  f_display.add(settings, "rotation").min(-180).max(180).name("Rotate").listen();
 
   var f_color = gui.addFolder("Colors");
-  f_color.addColor(settings, "tile_color").name("Tile");
-  f_color.addColor(settings, "tile_flipped_color").name("Flipped tile");
-  f_color.addColor(settings, "border_color").name("Border");
-  f_color.addColor(settings, "background_color").name("Background");
-  //f_color.open();
+  f_color.addColor(settings, "tile_color").name("Tile").listen();
+  f_color.addColor(settings, "tile_flipped_color").name("Flipped tile").listen();
+  f_color.addColor(settings, "border_color").name("Border").listen();
+  f_color.addColor(settings, "background_color").name("Background").listen();
 
   // touch control (hammer.js)
   var hammer = new Hammer(document.body, { preventDefault: true });
@@ -112,8 +70,6 @@ function setup() {
   hammer.on("rotate", rotate_screen);
 
   createCanvas(windowWidth, windowHeight);
-  settings.pattern_index = 7;
-  select_pattern();
 }
 
 function draw() {
@@ -140,7 +96,7 @@ function draw_pattern(pattern) {
       color = [...settings.tile_flipped_color];
     }
     for (let i = 0; i < color.length; i++) {
-      color[i] *= (tile.rot + 1) / (2 * PI + 1);
+      color[i] *= (2 * PI + 1 - tile.rot) / (2 * PI + 1);
     }
     fill(color);
     if (settings.borders) {
@@ -326,25 +282,11 @@ function spherical_transform(pos) {
     let scaling = (circle_radius * (1 - pow(c, -norm))) / norm;
     pos = pos.mult(scaling);
   }
-
   return pos;
 }
 
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
-}
-
-function select_next_pattern(dir = 1) {
-  let prev_index = int(settings.pattern_index);
-  let combi = prev_index + dir;
-  let new_index = combi % patterns.length;
-  settings.pattern_index = new_index;
-  select_pattern();
-}
-
-function select_pattern() {
-  pattern = patterns[settings.pattern_index];
-  active_node = pattern.shape.get_next_node([]);
 }
 
 function scale_screen(event) {
@@ -353,15 +295,6 @@ function scale_screen(event) {
 
 function rotate_screen(event) {
   settings.rotation = event.rotation;
-}
-
-
-function save_figure() {
-  let prev_show_nodes = settings.show_nodes;
-  settings.show_nodes = false;
-  draw();
-  saveCanvas("EscherMaker.png");
-  settings.show_nodes = prev_show_nodes;
 }
 
 function reset_pattern() {

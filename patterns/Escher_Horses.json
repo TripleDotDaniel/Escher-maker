@@ -1,0 +1,6174 @@
+{
+  "pattern": [
+  {
+    "tiles": [
+      [
+        "Object_ref",
+        1
+      ],
+      [
+        "Object_ref",
+        2
+      ],
+      [
+        "Object_ref",
+        3
+      ],
+      [
+        "Object_ref",
+        4
+      ],
+      [
+        "Object_ref",
+        5
+      ],
+      [
+        "Object_ref",
+        6
+      ],
+      [
+        "Object_ref",
+        7
+      ],
+      [
+        "Object_ref",
+        8
+      ],
+      [
+        "Object_ref",
+        9
+      ],
+      [
+        "Object_ref",
+        10
+      ],
+      [
+        "Object_ref",
+        11
+      ],
+      [
+        "Object_ref",
+        12
+      ],
+      [
+        "Object_ref",
+        13
+      ],
+      [
+        "Object_ref",
+        14
+      ],
+      [
+        "Object_ref",
+        15
+      ],
+      [
+        "Object_ref",
+        16
+      ],
+      [
+        "Object_ref",
+        17
+      ],
+      [
+        "Object_ref",
+        18
+      ],
+      [
+        "Object_ref",
+        19
+      ],
+      [
+        "Object_ref",
+        20
+      ],
+      [
+        "Object_ref",
+        21
+      ],
+      [
+        "Object_ref",
+        22
+      ],
+      [
+        "Object_ref",
+        23
+      ],
+      [
+        "Object_ref",
+        24
+      ],
+      [
+        "Object_ref",
+        25
+      ],
+      [
+        "Object_ref",
+        26
+      ],
+      [
+        "Object_ref",
+        27
+      ],
+      [
+        "Object_ref",
+        28
+      ],
+      [
+        "Object_ref",
+        29
+      ],
+      [
+        "Object_ref",
+        30
+      ],
+      [
+        "Object_ref",
+        31
+      ],
+      [
+        "Object_ref",
+        32
+      ],
+      [
+        "Object_ref",
+        33
+      ],
+      [
+        "Object_ref",
+        34
+      ],
+      [
+        "Object_ref",
+        35
+      ],
+      [
+        "Object_ref",
+        36
+      ],
+      [
+        "Object_ref",
+        37
+      ],
+      [
+        "Object_ref",
+        38
+      ],
+      [
+        "Object_ref",
+        39
+      ],
+      [
+        "Object_ref",
+        40
+      ],
+      [
+        "Object_ref",
+        41
+      ],
+      [
+        "Object_ref",
+        42
+      ],
+      [
+        "Object_ref",
+        43
+      ],
+      [
+        "Object_ref",
+        44
+      ],
+      [
+        "Object_ref",
+        45
+      ],
+      [
+        "Object_ref",
+        46
+      ],
+      [
+        "Object_ref",
+        47
+      ],
+      [
+        "Object_ref",
+        48
+      ],
+      [
+        "Object_ref",
+        49
+      ],
+      [
+        "Object_ref",
+        50
+      ],
+      [
+        "Object_ref",
+        51
+      ],
+      [
+        "Object_ref",
+        52
+      ],
+      [
+        "Object_ref",
+        53
+      ],
+      [
+        "Object_ref",
+        54
+      ],
+      [
+        "Object_ref",
+        55
+      ],
+      [
+        "Object_ref",
+        56
+      ],
+      [
+        "Object_ref",
+        57
+      ],
+      [
+        "Object_ref",
+        58
+      ],
+      [
+        "Object_ref",
+        59
+      ],
+      [
+        "Object_ref",
+        60
+      ],
+      [
+        "Object_ref",
+        61
+      ],
+      [
+        "Object_ref",
+        62
+      ],
+      [
+        "Object_ref",
+        63
+      ],
+      [
+        "Object_ref",
+        64
+      ],
+      [
+        "Object_ref",
+        65
+      ],
+      [
+        "Object_ref",
+        66
+      ],
+      [
+        "Object_ref",
+        67
+      ],
+      [
+        "Object_ref",
+        68
+      ],
+      [
+        "Object_ref",
+        69
+      ],
+      [
+        "Object_ref",
+        70
+      ],
+      [
+        "Object_ref",
+        71
+      ],
+      [
+        "Object_ref",
+        72
+      ],
+      [
+        "Object_ref",
+        73
+      ],
+      [
+        "Object_ref",
+        74
+      ],
+      [
+        "Object_ref",
+        75
+      ],
+      [
+        "Object_ref",
+        76
+      ],
+      [
+        "Object_ref",
+        77
+      ],
+      [
+        "Object_ref",
+        78
+      ],
+      [
+        "Object_ref",
+        79
+      ],
+      [
+        "Object_ref",
+        80
+      ],
+      [
+        "Object_ref",
+        81
+      ],
+      [
+        "Object_ref",
+        82
+      ],
+      [
+        "Object_ref",
+        83
+      ],
+      [
+        "Object_ref",
+        84
+      ],
+      [
+        "Object_ref",
+        85
+      ],
+      [
+        "Object_ref",
+        86
+      ],
+      [
+        "Object_ref",
+        87
+      ],
+      [
+        "Object_ref",
+        88
+      ],
+      [
+        "Object_ref",
+        89
+      ],
+      [
+        "Object_ref",
+        90
+      ],
+      [
+        "Object_ref",
+        91
+      ],
+      [
+        "Object_ref",
+        92
+      ],
+      [
+        "Object_ref",
+        93
+      ],
+      [
+        "Object_ref",
+        94
+      ],
+      [
+        "Object_ref",
+        95
+      ],
+      [
+        "Object_ref",
+        96
+      ],
+      [
+        "Object_ref",
+        97
+      ],
+      [
+        "Object_ref",
+        98
+      ],
+      [
+        "Object_ref",
+        99
+      ],
+      [
+        "Object_ref",
+        100
+      ],
+      [
+        "Object_ref",
+        101
+      ],
+      [
+        "Object_ref",
+        102
+      ],
+      [
+        "Object_ref",
+        103
+      ],
+      [
+        "Object_ref",
+        104
+      ],
+      [
+        "Object_ref",
+        105
+      ],
+      [
+        "Object_ref",
+        106
+      ],
+      [
+        "Object_ref",
+        107
+      ],
+      [
+        "Object_ref",
+        108
+      ],
+      [
+        "Object_ref",
+        109
+      ],
+      [
+        "Object_ref",
+        110
+      ],
+      [
+        "Object_ref",
+        111
+      ],
+      [
+        "Object_ref",
+        112
+      ],
+      [
+        "Object_ref",
+        113
+      ],
+      [
+        "Object_ref",
+        114
+      ],
+      [
+        "Object_ref",
+        115
+      ],
+      [
+        "Object_ref",
+        116
+      ],
+      [
+        "Object_ref",
+        117
+      ],
+      [
+        "Object_ref",
+        118
+      ],
+      [
+        "Object_ref",
+        119
+      ],
+      [
+        "Object_ref",
+        120
+      ],
+      [
+        "Object_ref",
+        121
+      ],
+      [
+        "Object_ref",
+        122
+      ],
+      [
+        "Object_ref",
+        123
+      ],
+      [
+        "Object_ref",
+        124
+      ],
+      [
+        "Object_ref",
+        125
+      ],
+      [
+        "Object_ref",
+        126
+      ],
+      [
+        "Object_ref",
+        127
+      ],
+      [
+        "Object_ref",
+        128
+      ],
+      [
+        "Object_ref",
+        129
+      ],
+      [
+        "Object_ref",
+        130
+      ],
+      [
+        "Object_ref",
+        131
+      ],
+      [
+        "Object_ref",
+        132
+      ],
+      [
+        "Object_ref",
+        133
+      ],
+      [
+        "Object_ref",
+        134
+      ],
+      [
+        "Object_ref",
+        135
+      ],
+      [
+        "Object_ref",
+        136
+      ],
+      [
+        "Object_ref",
+        137
+      ],
+      [
+        "Object_ref",
+        138
+      ],
+      [
+        "Object_ref",
+        139
+      ],
+      [
+        "Object_ref",
+        140
+      ],
+      [
+        "Object_ref",
+        141
+      ],
+      [
+        "Object_ref",
+        142
+      ],
+      [
+        "Object_ref",
+        143
+      ],
+      [
+        "Object_ref",
+        144
+      ],
+      [
+        "Object_ref",
+        145
+      ],
+      [
+        "Object_ref",
+        146
+      ],
+      [
+        "Object_ref",
+        147
+      ],
+      [
+        "Object_ref",
+        148
+      ],
+      [
+        "Object_ref",
+        149
+      ],
+      [
+        "Object_ref",
+        150
+      ],
+      [
+        "Object_ref",
+        151
+      ],
+      [
+        "Object_ref",
+        152
+      ],
+      [
+        "Object_ref",
+        153
+      ],
+      [
+        "Object_ref",
+        154
+      ],
+      [
+        "Object_ref",
+        155
+      ],
+      [
+        "Object_ref",
+        156
+      ],
+      [
+        "Object_ref",
+        157
+      ],
+      [
+        "Object_ref",
+        158
+      ],
+      [
+        "Object_ref",
+        159
+      ],
+      [
+        "Object_ref",
+        160
+      ],
+      [
+        "Object_ref",
+        161
+      ],
+      [
+        "Object_ref",
+        162
+      ],
+      [
+        "Object_ref",
+        163
+      ],
+      [
+        "Object_ref",
+        164
+      ],
+      [
+        "Object_ref",
+        165
+      ],
+      [
+        "Object_ref",
+        166
+      ],
+      [
+        "Object_ref",
+        167
+      ],
+      [
+        "Object_ref",
+        168
+      ],
+      [
+        "Object_ref",
+        169
+      ],
+      [
+        "Object_ref",
+        170
+      ],
+      [
+        "Object_ref",
+        171
+      ],
+      [
+        "Object_ref",
+        172
+      ],
+      [
+        "Object_ref",
+        173
+      ],
+      [
+        "Object_ref",
+        174
+      ],
+      [
+        "Object_ref",
+        175
+      ],
+      [
+        "Object_ref",
+        176
+      ],
+      [
+        "Object_ref",
+        177
+      ],
+      [
+        "Object_ref",
+        178
+      ],
+      [
+        "Object_ref",
+        179
+      ],
+      [
+        "Object_ref",
+        180
+      ],
+      [
+        "Object_ref",
+        181
+      ],
+      [
+        "Object_ref",
+        182
+      ],
+      [
+        "Object_ref",
+        183
+      ],
+      [
+        "Object_ref",
+        184
+      ],
+      [
+        "Object_ref",
+        185
+      ],
+      [
+        "Object_ref",
+        186
+      ],
+      [
+        "Object_ref",
+        187
+      ],
+      [
+        "Object_ref",
+        188
+      ],
+      [
+        "Object_ref",
+        189
+      ],
+      [
+        "Object_ref",
+        190
+      ],
+      [
+        "Object_ref",
+        191
+      ],
+      [
+        "Object_ref",
+        192
+      ],
+      [
+        "Object_ref",
+        193
+      ],
+      [
+        "Object_ref",
+        194
+      ],
+      [
+        "Object_ref",
+        195
+      ],
+      [
+        "Object_ref",
+        196
+      ],
+      [
+        "Object_ref",
+        197
+      ],
+      [
+        "Object_ref",
+        198
+      ],
+      [
+        "Object_ref",
+        199
+      ],
+      [
+        "Object_ref",
+        200
+      ],
+      [
+        "Object_ref",
+        201
+      ],
+      [
+        "Object_ref",
+        202
+      ],
+      [
+        "Object_ref",
+        203
+      ],
+      [
+        "Object_ref",
+        204
+      ],
+      [
+        "Object_ref",
+        205
+      ],
+      [
+        "Object_ref",
+        206
+      ],
+      [
+        "Object_ref",
+        207
+      ],
+      [
+        "Object_ref",
+        208
+      ],
+      [
+        "Object_ref",
+        209
+      ],
+      [
+        "Object_ref",
+        210
+      ],
+      [
+        "Object_ref",
+        211
+      ],
+      [
+        "Object_ref",
+        212
+      ],
+      [
+        "Object_ref",
+        213
+      ],
+      [
+        "Object_ref",
+        214
+      ],
+      [
+        "Object_ref",
+        215
+      ],
+      [
+        "Object_ref",
+        216
+      ],
+      [
+        "Object_ref",
+        217
+      ],
+      [
+        "Object_ref",
+        218
+      ],
+      [
+        "Object_ref",
+        219
+      ],
+      [
+        "Object_ref",
+        220
+      ],
+      [
+        "Object_ref",
+        221
+      ],
+      [
+        "Object_ref",
+        222
+      ],
+      [
+        "Object_ref",
+        223
+      ],
+      [
+        "Object_ref",
+        224
+      ],
+      [
+        "Object_ref",
+        225
+      ],
+      [
+        "Object_ref",
+        226
+      ],
+      [
+        "Object_ref",
+        227
+      ],
+      [
+        "Object_ref",
+        228
+      ],
+      [
+        "Object_ref",
+        229
+      ],
+      [
+        "Object_ref",
+        230
+      ],
+      [
+        "Object_ref",
+        231
+      ],
+      [
+        "Object_ref",
+        232
+      ],
+      [
+        "Object_ref",
+        233
+      ],
+      [
+        "Object_ref",
+        234
+      ],
+      [
+        "Object_ref",
+        235
+      ],
+      [
+        "Object_ref",
+        236
+      ],
+      [
+        "Object_ref",
+        237
+      ],
+      [
+        "Object_ref",
+        238
+      ],
+      [
+        "Object_ref",
+        239
+      ],
+      [
+        "Object_ref",
+        240
+      ],
+      [
+        "Object_ref",
+        241
+      ],
+      [
+        "Object_ref",
+        242
+      ],
+      [
+        "Object_ref",
+        243
+      ],
+      [
+        "Object_ref",
+        244
+      ],
+      [
+        "Object_ref",
+        245
+      ],
+      [
+        "Object_ref",
+        246
+      ],
+      [
+        "Object_ref",
+        247
+      ],
+      [
+        "Object_ref",
+        248
+      ],
+      [
+        "Object_ref",
+        249
+      ],
+      [
+        "Object_ref",
+        250
+      ],
+      [
+        "Object_ref",
+        251
+      ],
+      [
+        "Object_ref",
+        252
+      ],
+      [
+        "Object_ref",
+        253
+      ],
+      [
+        "Object_ref",
+        254
+      ],
+      [
+        "Object_ref",
+        255
+      ],
+      [
+        "Object_ref",
+        256
+      ],
+      [
+        "Object_ref",
+        257
+      ],
+      [
+        "Object_ref",
+        258
+      ],
+      [
+        "Object_ref",
+        259
+      ],
+      [
+        "Object_ref",
+        260
+      ],
+      [
+        "Object_ref",
+        261
+      ],
+      [
+        "Object_ref",
+        262
+      ],
+      [
+        "Object_ref",
+        263
+      ],
+      [
+        "Object_ref",
+        264
+      ],
+      [
+        "Object_ref",
+        265
+      ],
+      [
+        "Object_ref",
+        266
+      ],
+      [
+        "Object_ref",
+        267
+      ],
+      [
+        "Object_ref",
+        268
+      ],
+      [
+        "Object_ref",
+        269
+      ],
+      [
+        "Object_ref",
+        270
+      ],
+      [
+        "Object_ref",
+        271
+      ],
+      [
+        "Object_ref",
+        272
+      ],
+      [
+        "Object_ref",
+        273
+      ],
+      [
+        "Object_ref",
+        274
+      ],
+      [
+        "Object_ref",
+        275
+      ],
+      [
+        "Object_ref",
+        276
+      ],
+      [
+        "Object_ref",
+        277
+      ],
+      [
+        "Object_ref",
+        278
+      ],
+      [
+        "Object_ref",
+        279
+      ],
+      [
+        "Object_ref",
+        280
+      ],
+      [
+        "Object_ref",
+        281
+      ],
+      [
+        "Object_ref",
+        282
+      ],
+      [
+        "Object_ref",
+        283
+      ],
+      [
+        "Object_ref",
+        284
+      ],
+      [
+        "Object_ref",
+        285
+      ],
+      [
+        "Object_ref",
+        286
+      ],
+      [
+        "Object_ref",
+        287
+      ],
+      [
+        "Object_ref",
+        288
+      ],
+      [
+        "Object_ref",
+        289
+      ],
+      [
+        "Object_ref",
+        290
+      ],
+      [
+        "Object_ref",
+        291
+      ],
+      [
+        "Object_ref",
+        292
+      ],
+      [
+        "Object_ref",
+        293
+      ],
+      [
+        "Object_ref",
+        294
+      ],
+      [
+        "Object_ref",
+        295
+      ],
+      [
+        "Object_ref",
+        296
+      ],
+      [
+        "Object_ref",
+        297
+      ],
+      [
+        "Object_ref",
+        298
+      ],
+      [
+        "Object_ref",
+        299
+      ],
+      [
+        "Object_ref",
+        300
+      ],
+      [
+        "Object_ref",
+        301
+      ],
+      [
+        "Object_ref",
+        302
+      ],
+      [
+        "Object_ref",
+        303
+      ],
+      [
+        "Object_ref",
+        304
+      ],
+      [
+        "Object_ref",
+        305
+      ]
+    ],
+    "combination": [
+      2,
+      3,
+      0,
+      1
+    ],
+    "shape": [
+      "Object_ref",
+      306
+    ],
+    "movable_corner": true,
+    "name": "Pattern 7 (4-sided)",
+    "type": "Pattern"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        0,
+        0
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        0,
+        1.4142135623730951
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        1.4142135623730951,
+        8.659560562354934e-17
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        1.7319121124709868e-16,
+        -1.4142135623730951
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -1.4142135623730951,
+        -2.59786816870648e-16
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        0,
+        2.8284271247461903
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        1.4142135623730951,
+        1.4142135623730951
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -1.4142135623730951,
+        1.414213562373095
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        2.8284271247461903,
+        1.7319121124709868e-16
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        1.4142135623730954,
+        -1.4142135623730951
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        3.4638242249419736e-16,
+        -2.8284271247461903
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -1.414213562373095,
+        -1.4142135623730954
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -2.8284271247461903,
+        -5.19573633741296e-16
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        0,
+        4.242640687119286
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        1.4142135623730951,
+        2.8284271247461903
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -1.4142135623730951,
+        2.82842712474619
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        2.8284271247461903,
+        1.4142135623730951
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -2.8284271247461903,
+        1.4142135623730947
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        4.242640687119286,
+        2.59786816870648e-16
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        2.8284271247461903,
+        -1.414213562373095
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        1.4142135623730956,
+        -2.8284271247461903
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        5.19573633741296e-16,
+        -4.242640687119286
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -1.4142135623730947,
+        -2.8284271247461907
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -2.82842712474619,
+        -1.4142135623730956
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -4.242640687119286,
+        -7.793604506119441e-16
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        0,
+        5.656854249492381
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        1.4142135623730951,
+        4.242640687119286
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -1.4142135623730951,
+        4.242640687119286
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        2.8284271247461903,
+        2.8284271247461903
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -2.8284271247461903,
+        2.8284271247461894
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        4.242640687119286,
+        1.4142135623730951
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -4.242640687119286,
+        1.4142135623730945
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        5.656854249492381,
+        3.4638242249419736e-16
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        4.242640687119286,
+        -1.414213562373095
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        2.8284271247461903,
+        -2.82842712474619
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        1.4142135623730958,
+        -4.242640687119286
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        6.927648449883947e-16,
+        -5.656854249492381
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -1.4142135623730947,
+        -4.242640687119286
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -2.82842712474619,
+        -2.828427124746191
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -4.242640687119285,
+        -1.4142135623730958
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -5.656854249492381,
+        -1.039147267482592e-15
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        0,
+        7.0710678118654755
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        1.4142135623730951,
+        5.656854249492381
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -1.4142135623730951,
+        5.656854249492381
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        2.8284271247461903,
+        4.242640687119286
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -2.8284271247461903,
+        4.242640687119286
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        4.242640687119286,
+        2.8284271247461903
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -4.242640687119286,
+        2.828427124746189
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        5.656854249492381,
+        1.4142135623730951
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -5.656854249492381,
+        1.4142135623730943
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        7.0710678118654755,
+        4.329780281177467e-16
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        5.656854249492381,
+        -1.4142135623730947
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        4.242640687119286,
+        -2.82842712474619
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        2.8284271247461903,
+        -4.242640687119285
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        1.414213562373096,
+        -5.656854249492381
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        8.659560562354934e-16,
+        -7.0710678118654755
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -1.4142135623730945,
+        -5.656854249492381
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -2.82842712474619,
+        -4.242640687119286
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -4.242640687119285,
+        -2.8284271247461916
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -5.65685424949238,
+        -1.414213562373096
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -7.0710678118654755,
+        -1.29893408435324e-15
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        0,
+        8.485281374238571
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        1.4142135623730951,
+        7.0710678118654755
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -1.4142135623730951,
+        7.0710678118654755
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        2.8284271247461903,
+        5.656854249492381
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -2.8284271247461903,
+        5.656854249492381
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        4.242640687119286,
+        4.242640687119286
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -4.242640687119286,
+        4.242640687119286
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        5.656854249492381,
+        2.8284271247461903
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -5.656854249492381,
+        2.8284271247461885
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        7.0710678118654755,
+        1.4142135623730951
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -7.0710678118654755,
+        1.414213562373094
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        8.485281374238571,
+        5.19573633741296e-16
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        7.0710678118654755,
+        -1.4142135623730947
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        5.656854249492381,
+        -2.82842712474619
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        4.242640687119286,
+        -4.242640687119285
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        2.8284271247461903,
+        -5.65685424949238
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        1.4142135623730963,
+        -7.0710678118654755
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        1.039147267482592e-15,
+        -8.485281374238571
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -1.4142135623730943,
+        -7.0710678118654755
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -2.82842712474619,
+        -5.656854249492381
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -4.242640687119285,
+        -4.242640687119286
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -5.65685424949238,
+        -2.828427124746192
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -7.071067811865475,
+        -1.4142135623730963
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -8.485281374238571,
+        -1.558720901223888e-15
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        0,
+        9.899494936611667
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        1.4142135623730951,
+        8.485281374238571
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -1.4142135623730951,
+        8.485281374238571
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        2.8284271247461903,
+        7.0710678118654755
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -2.8284271247461903,
+        7.0710678118654755
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        4.242640687119286,
+        5.656854249492381
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -4.242640687119286,
+        5.656854249492381
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        5.656854249492381,
+        4.242640687119286
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -5.656854249492381,
+        4.242640687119286
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        7.0710678118654755,
+        2.8284271247461903
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -7.0710678118654755,
+        2.828427124746188
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        8.485281374238571,
+        1.4142135623730951
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -8.485281374238571,
+        1.4142135623730938
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        9.899494936611667,
+        6.061692393648454e-16
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        8.485281374238571,
+        -1.4142135623730947
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        7.0710678118654755,
+        -2.82842712474619
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        5.656854249492381,
+        -4.242640687119285
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        4.242640687119286,
+        -5.65685424949238
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        2.8284271247461903,
+        -7.071067811865475
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        1.4142135623730965,
+        -8.485281374238571
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        1.2123384787296907e-15,
+        -9.899494936611667
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -1.414213562373094,
+        -8.485281374238571
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -2.8284271247461894,
+        -7.0710678118654755
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -4.242640687119285,
+        -5.656854249492381
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -5.65685424949238,
+        -4.242640687119286
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -7.071067811865475,
+        -2.8284271247461925
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -8.48528137423857,
+        -1.4142135623730965
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -9.899494936611667,
+        -1.818507718094536e-15
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        0,
+        11.313708498984763
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        1.4142135623730951,
+        9.899494936611667
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -1.4142135623730951,
+        9.899494936611667
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        2.8284271247461903,
+        8.485281374238571
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -2.8284271247461903,
+        8.485281374238571
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        4.242640687119286,
+        7.0710678118654755
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -4.242640687119286,
+        7.0710678118654755
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        5.656854249492381,
+        5.656854249492381
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -5.656854249492381,
+        5.656854249492381
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        7.0710678118654755,
+        4.242640687119286
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -7.0710678118654755,
+        4.242640687119286
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        8.485281374238571,
+        2.8284271247461903
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -8.485281374238571,
+        2.8284271247461876
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        9.899494936611667,
+        1.4142135623730951
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -9.899494936611667,
+        1.4142135623730936
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        11.313708498984763,
+        6.927648449883947e-16
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        9.899494936611667,
+        -1.4142135623730945
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        8.485281374238571,
+        -2.82842712474619
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        7.0710678118654755,
+        -4.242640687119285
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        5.656854249492381,
+        -5.65685424949238
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        4.242640687119286,
+        -7.071067811865475
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        2.8284271247461903,
+        -8.48528137423857
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        1.4142135623730967,
+        -9.899494936611667
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        1.3855296899767895e-15,
+        -11.313708498984763
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -1.414213562373094,
+        -9.899494936611667
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -2.828427124746189,
+        -8.485281374238571
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -4.242640687119285,
+        -7.0710678118654755
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -5.65685424949238,
+        -5.656854249492381
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -7.071067811865475,
+        -4.242640687119286
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -8.48528137423857,
+        -2.828427124746193
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -9.899494936611665,
+        -1.4142135623730967
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -11.313708498984763,
+        -2.078294534965184e-15
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        0,
+        12.727922061357859
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        1.4142135623730951,
+        11.313708498984763
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -1.4142135623730951,
+        11.313708498984763
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        2.8284271247461903,
+        9.899494936611667
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -2.8284271247461903,
+        9.899494936611667
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        4.242640687119286,
+        8.485281374238571
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -4.242640687119286,
+        8.485281374238571
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        5.656854249492381,
+        7.0710678118654755
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -5.656854249492381,
+        7.0710678118654755
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        7.0710678118654755,
+        5.656854249492381
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -7.0710678118654755,
+        5.656854249492381
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        8.485281374238571,
+        4.242640687119286
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -8.485281374238571,
+        4.242640687119286
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        9.899494936611667,
+        2.8284271247461903
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -9.899494936611667,
+        2.828427124746187
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        11.313708498984763,
+        1.4142135623730951
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -11.313708498984763,
+        1.4142135623730934
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        12.727922061357859,
+        7.793604506119441e-16
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        11.313708498984763,
+        -1.4142135623730945
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        9.899494936611667,
+        -2.82842712474619
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        8.485281374238571,
+        -4.242640687119285
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        7.0710678118654755,
+        -5.65685424949238
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        5.656854249492381,
+        -7.071067811865475
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        4.242640687119286,
+        -8.48528137423857
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        2.8284271247461903,
+        -9.899494936611665
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        1.414213562373097,
+        -11.313708498984763
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        1.5587209012238882e-15,
+        -12.727922061357859
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -1.4142135623730938,
+        -11.313708498984763
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -2.828427124746189,
+        -9.899494936611667
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -4.242640687119284,
+        -8.485281374238571
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -5.65685424949238,
+        -7.0710678118654755
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -7.071067811865475,
+        -5.656854249492381
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -8.48528137423857,
+        -4.242640687119286
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -9.899494936611665,
+        -2.8284271247461934
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -11.313708498984761,
+        -1.414213562373097
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -12.727922061357859,
+        -2.338081351835832e-15
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        1.4142135623730951,
+        12.727922061357859
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -1.4142135623730951,
+        12.727922061357859
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        2.8284271247461903,
+        11.313708498984763
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -2.8284271247461903,
+        11.313708498984763
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        4.242640687119286,
+        9.899494936611667
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -4.242640687119286,
+        9.899494936611667
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        5.656854249492381,
+        8.485281374238571
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -5.656854249492381,
+        8.485281374238571
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        7.0710678118654755,
+        7.0710678118654755
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -7.0710678118654755,
+        7.0710678118654755
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        8.485281374238571,
+        5.656854249492381
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -8.485281374238571,
+        5.656854249492381
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        9.899494936611667,
+        4.242640687119286
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -9.899494936611667,
+        4.242640687119286
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        11.313708498984763,
+        2.8284271247461903
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -11.313708498984763,
+        2.8284271247461867
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        12.727922061357859,
+        1.4142135623730951
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -12.727922061357859,
+        1.4142135623730931
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        12.727922061357859,
+        -1.4142135623730943
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        11.313708498984763,
+        -2.82842712474619
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        9.899494936611667,
+        -4.242640687119285
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        8.485281374238571,
+        -5.65685424949238
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        7.0710678118654755,
+        -7.071067811865475
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        5.656854249492381,
+        -8.48528137423857
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        4.242640687119286,
+        -9.899494936611665
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        2.8284271247461903,
+        -11.313708498984761
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        1.4142135623730971,
+        -12.727922061357859
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -1.4142135623730936,
+        -12.727922061357859
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -2.828427124746189,
+        -11.313708498984763
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -4.242640687119284,
+        -9.899494936611667
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -5.656854249492379,
+        -8.485281374238571
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -7.071067811865475,
+        -7.0710678118654755
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -8.48528137423857,
+        -5.656854249492381
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -9.899494936611665,
+        -4.242640687119286
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -11.313708498984761,
+        -2.828427124746194
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -12.727922061357857,
+        -1.4142135623730971
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        2.8284271247461903,
+        12.727922061357859
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -2.8284271247461903,
+        12.727922061357859
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        4.242640687119286,
+        11.313708498984763
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -4.242640687119286,
+        11.313708498984763
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        5.656854249492381,
+        9.899494936611667
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -5.656854249492381,
+        9.899494936611667
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        7.0710678118654755,
+        8.485281374238571
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -7.0710678118654755,
+        8.485281374238571
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        8.485281374238571,
+        7.0710678118654755
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -8.485281374238571,
+        7.0710678118654755
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        9.899494936611667,
+        5.656854249492381
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -9.899494936611667,
+        5.656854249492381
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        11.313708498984763,
+        4.242640687119286
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -11.313708498984763,
+        4.242640687119286
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        12.727922061357859,
+        2.8284271247461903
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -12.727922061357859,
+        2.8284271247461863
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        12.727922061357859,
+        -2.8284271247461894
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        11.313708498984763,
+        -4.242640687119285
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        9.899494936611667,
+        -5.65685424949238
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        8.485281374238571,
+        -7.071067811865475
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        7.0710678118654755,
+        -8.48528137423857
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        5.656854249492381,
+        -9.899494936611665
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        4.242640687119286,
+        -11.313708498984761
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        2.8284271247461903,
+        -12.727922061357857
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -2.828427124746189,
+        -12.727922061357859
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -4.242640687119284,
+        -11.313708498984763
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -5.656854249492379,
+        -9.899494936611667
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -7.071067811865474,
+        -8.485281374238571
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -8.48528137423857,
+        -7.0710678118654755
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -9.899494936611665,
+        -5.656854249492381
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -11.313708498984761,
+        -4.242640687119286
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -12.727922061357857,
+        -2.8284271247461943
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        4.242640687119286,
+        12.727922061357859
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -4.242640687119286,
+        12.727922061357859
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        5.656854249492381,
+        11.313708498984763
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -5.656854249492381,
+        11.313708498984763
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        7.0710678118654755,
+        9.899494936611667
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -7.0710678118654755,
+        9.899494936611667
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        8.485281374238571,
+        8.485281374238571
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -8.485281374238571,
+        8.485281374238571
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        9.899494936611667,
+        7.0710678118654755
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -9.899494936611667,
+        7.0710678118654755
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        11.313708498984763,
+        5.656854249492381
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -11.313708498984763,
+        5.656854249492381
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        12.727922061357859,
+        4.242640687119286
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -12.727922061357859,
+        4.242640687119286
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        12.727922061357859,
+        -4.242640687119285
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        11.313708498984763,
+        -5.65685424949238
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        9.899494936611667,
+        -7.071067811865475
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        8.485281374238571,
+        -8.48528137423857
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        7.0710678118654755,
+        -9.899494936611665
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        5.656854249492381,
+        -11.313708498984761
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        4.242640687119286,
+        -12.727922061357857
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -4.242640687119284,
+        -12.727922061357859
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -5.656854249492379,
+        -11.313708498984763
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -7.071067811865474,
+        -9.899494936611667
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -8.48528137423857,
+        -8.485281374238571
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -9.899494936611665,
+        -7.0710678118654755
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -11.313708498984761,
+        -5.656854249492381
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -12.727922061357857,
+        -4.242640687119286
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        5.656854249492381,
+        12.727922061357859
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -5.656854249492381,
+        12.727922061357859
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        7.0710678118654755,
+        11.313708498984763
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -7.0710678118654755,
+        11.313708498984763
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        8.485281374238571,
+        9.899494936611667
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -8.485281374238571,
+        9.899494936611667
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        9.899494936611667,
+        8.485281374238571
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -9.899494936611667,
+        8.485281374238571
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        11.313708498984763,
+        7.0710678118654755
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -11.313708498984763,
+        7.0710678118654755
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        12.727922061357859,
+        5.656854249492381
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -12.727922061357859,
+        5.656854249492381
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        12.727922061357859,
+        -5.65685424949238
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        11.313708498984763,
+        -7.071067811865475
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        9.899494936611667,
+        -8.48528137423857
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        8.485281374238571,
+        -9.899494936611665
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        7.0710678118654755,
+        -11.313708498984761
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        5.656854249492381,
+        -12.727922061357857
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -5.656854249492379,
+        -12.727922061357859
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -7.071067811865474,
+        -11.313708498984763
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -8.48528137423857,
+        -9.899494936611667
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -9.899494936611665,
+        -8.485281374238571
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -11.313708498984761,
+        -7.0710678118654755
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -12.727922061357857,
+        -5.656854249492381
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        9.899494936611667,
+        9.899494936611667
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -9.899494936611667,
+        9.899494936611667
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        9.899494936611667,
+        -9.899494936611665
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -9.899494936611665,
+        -9.899494936611667
+      ]
+    ],
+    "rot": 0,
+    "mirror": 1,
+    "type": "Tile"
+  },
+  {
+    "segments": [
+      [
+        "Object_ref",
+        307
+      ],
+      [
+        "Object_ref",
+        308
+      ],
+      [
+        "Object_ref",
+        309
+      ],
+      [
+        "Object_ref",
+        310
+      ],
+      [
+        "Object_ref",
+        311
+      ],
+      [
+        "Object_ref",
+        312
+      ],
+      [
+        "Object_ref",
+        313
+      ],
+      [
+        "Object_ref",
+        314
+      ]
+    ],
+    "links": [
+      [
+        "Object_ref",
+        315
+      ],
+      [
+        "Object_ref",
+        316
+      ],
+      [
+        "Object_ref",
+        317
+      ],
+      [
+        "Object_ref",
+        318
+      ],
+      [
+        "Object_ref",
+        319
+      ],
+      [
+        "Object_ref",
+        320
+      ],
+      [
+        "Object_ref",
+        321
+      ],
+      [
+        "Object_ref",
+        322
+      ]
+    ],
+    "type": "Shape"
+  },
+  {
+    "nodes": [
+      [
+        "Object_ref",
+        323
+      ],
+      [
+        "Object_ref",
+        324
+      ],
+      [
+        "Object_ref",
+        325
+      ],
+      [
+        "Object_ref",
+        326
+      ],
+      [
+        "Object_ref",
+        327
+      ],
+      [
+        "Object_ref",
+        328
+      ],
+      [
+        "Object_ref",
+        329
+      ],
+      [
+        "Object_ref",
+        330
+      ],
+      [
+        "Object_ref",
+        331
+      ],
+      [
+        "Object_ref",
+        332
+      ]
+    ],
+    "angle": 0,
+    "dist_to_center": 0.7071067811865476,
+    "segment_id": 863,
+    "type": "Segment"
+  },
+  {
+    "nodes": [
+      [
+        "Object_ref",
+        332
+      ],
+      [
+        "Object_ref",
+        333
+      ],
+      [
+        "Object_ref",
+        334
+      ],
+      [
+        "Object_ref",
+        335
+      ],
+      [
+        "Object_ref",
+        336
+      ],
+      [
+        "Object_ref",
+        337
+      ]
+    ],
+    "angle": 0,
+    "dist_to_center": 0.7071067811865476,
+    "segment_id": 864,
+    "type": "Segment"
+  },
+  {
+    "nodes": [
+      [
+        "Object_ref",
+        337
+      ],
+      [
+        "Object_ref",
+        338
+      ],
+      [
+        "Object_ref",
+        339
+      ],
+      [
+        "Object_ref",
+        340
+      ],
+      [
+        "Object_ref",
+        341
+      ],
+      [
+        "Object_ref",
+        342
+      ],
+      [
+        "Object_ref",
+        343
+      ],
+      [
+        "Object_ref",
+        344
+      ],
+      [
+        "Object_ref",
+        345
+      ],
+      [
+        "Object_ref",
+        346
+      ],
+      [
+        "Object_ref",
+        347
+      ],
+      [
+        "Object_ref",
+        348
+      ],
+      [
+        "Object_ref",
+        349
+      ],
+      [
+        "Object_ref",
+        350
+      ]
+    ],
+    "angle": 1.5707963267948966,
+    "dist_to_center": 0.7071067811865476,
+    "segment_id": 865,
+    "type": "Segment"
+  },
+  {
+    "nodes": [
+      [
+        "Object_ref",
+        350
+      ],
+      [
+        "Object_ref",
+        351
+      ],
+      [
+        "Object_ref",
+        352
+      ]
+    ],
+    "angle": 1.5707963267948966,
+    "dist_to_center": 0.7071067811865476,
+    "segment_id": 866,
+    "type": "Segment"
+  },
+  {
+    "nodes": [
+      [
+        "Object_ref",
+        352
+      ],
+      [
+        "Object_ref",
+        353
+      ],
+      [
+        "Object_ref",
+        354
+      ],
+      [
+        "Object_ref",
+        355
+      ],
+      [
+        "Object_ref",
+        356
+      ],
+      [
+        "Object_ref",
+        357
+      ]
+    ],
+    "angle": 3.141592653589793,
+    "dist_to_center": 0.7071067811865476,
+    "segment_id": 867,
+    "type": "Segment"
+  },
+  {
+    "nodes": [
+      [
+        "Object_ref",
+        357
+      ],
+      [
+        "Object_ref",
+        358
+      ],
+      [
+        "Object_ref",
+        359
+      ],
+      [
+        "Object_ref",
+        360
+      ],
+      [
+        "Object_ref",
+        361
+      ],
+      [
+        "Object_ref",
+        362
+      ],
+      [
+        "Object_ref",
+        363
+      ],
+      [
+        "Object_ref",
+        364
+      ],
+      [
+        "Object_ref",
+        365
+      ],
+      [
+        "Object_ref",
+        366
+      ]
+    ],
+    "angle": 3.141592653589793,
+    "dist_to_center": 0.7071067811865476,
+    "segment_id": 868,
+    "type": "Segment"
+  },
+  {
+    "nodes": [
+      [
+        "Object_ref",
+        366
+      ],
+      [
+        "Object_ref",
+        367
+      ],
+      [
+        "Object_ref",
+        368
+      ]
+    ],
+    "angle": 4.71238898038469,
+    "dist_to_center": 0.7071067811865476,
+    "segment_id": 869,
+    "type": "Segment"
+  },
+  {
+    "nodes": [
+      [
+        "Object_ref",
+        368
+      ],
+      [
+        "Object_ref",
+        369
+      ],
+      [
+        "Object_ref",
+        370
+      ],
+      [
+        "Object_ref",
+        371
+      ],
+      [
+        "Object_ref",
+        372
+      ],
+      [
+        "Object_ref",
+        373
+      ],
+      [
+        "Object_ref",
+        374
+      ],
+      [
+        "Object_ref",
+        375
+      ],
+      [
+        "Object_ref",
+        376
+      ],
+      [
+        "Object_ref",
+        377
+      ],
+      [
+        "Object_ref",
+        378
+      ],
+      [
+        "Object_ref",
+        379
+      ],
+      [
+        "Object_ref",
+        380
+      ],
+      [
+        "Object_ref",
+        323
+      ]
+    ],
+    "angle": 4.71238898038469,
+    "dist_to_center": 0.7071067811865476,
+    "segment_id": 870,
+    "type": "Segment"
+  },
+  {
+    "segment_source": [
+      "Object_ref",
+      307
+    ],
+    "segment_linked": [
+      "Object_ref",
+      312
+    ],
+    "flip_x": true,
+    "flip_y": true,
+    "segment_source_id": 863,
+    "segment_linked_id": 868,
+    "link_id": 871,
+    "type": "Link"
+  },
+  {
+    "segment_source": [
+      "Object_ref",
+      308
+    ],
+    "segment_linked": [
+      "Object_ref",
+      311
+    ],
+    "flip_x": true,
+    "flip_y": true,
+    "segment_source_id": 864,
+    "segment_linked_id": 867,
+    "link_id": 872,
+    "type": "Link"
+  },
+  {
+    "segment_source": [
+      "Object_ref",
+      309
+    ],
+    "segment_linked": [
+      "Object_ref",
+      314
+    ],
+    "flip_x": true,
+    "flip_y": true,
+    "segment_source_id": 865,
+    "segment_linked_id": 870,
+    "link_id": 873,
+    "type": "Link"
+  },
+  {
+    "segment_source": [
+      "Object_ref",
+      310
+    ],
+    "segment_linked": [
+      "Object_ref",
+      313
+    ],
+    "flip_x": true,
+    "flip_y": true,
+    "segment_source_id": 866,
+    "segment_linked_id": 869,
+    "link_id": 874,
+    "type": "Link"
+  },
+  {
+    "segment_source": [
+      "Object_ref",
+      311
+    ],
+    "segment_linked": [
+      "Object_ref",
+      308
+    ],
+    "flip_x": true,
+    "flip_y": true,
+    "segment_source_id": 867,
+    "segment_linked_id": 864,
+    "link_id": 875,
+    "type": "Link"
+  },
+  {
+    "segment_source": [
+      "Object_ref",
+      312
+    ],
+    "segment_linked": [
+      "Object_ref",
+      307
+    ],
+    "flip_x": true,
+    "flip_y": true,
+    "segment_source_id": 868,
+    "segment_linked_id": 863,
+    "link_id": 876,
+    "type": "Link"
+  },
+  {
+    "segment_source": [
+      "Object_ref",
+      313
+    ],
+    "segment_linked": [
+      "Object_ref",
+      310
+    ],
+    "flip_x": true,
+    "flip_y": true,
+    "segment_source_id": 869,
+    "segment_linked_id": 866,
+    "link_id": 877,
+    "type": "Link"
+  },
+  {
+    "segment_source": [
+      "Object_ref",
+      314
+    ],
+    "segment_linked": [
+      "Object_ref",
+      309
+    ],
+    "flip_x": true,
+    "flip_y": true,
+    "segment_source_id": 870,
+    "segment_linked_id": 865,
+    "link_id": 878,
+    "type": "Link"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -0.7071067811865475,
+        0.7071067811865476
+      ]
+    ],
+    "movable": true,
+    "node_id": 847,
+    "type": "Node"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -0.6133333333333332,
+        0.8097691179286508
+      ]
+    ],
+    "movable": true,
+    "node_id": 848,
+    "type": "Node"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -0.6844444444444443,
+        0.8711111111111113
+      ]
+    ],
+    "movable": true,
+    "node_id": 880,
+    "type": "Node"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -0.6666666666666664,
+        1.0044444444444445
+      ]
+    ],
+    "movable": true,
+    "node_id": 882,
+    "type": "Node"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -0.3200000000000002,
+        1.1377777777777778
+      ]
+    ],
+    "movable": true,
+    "node_id": 913,
+    "type": "Node"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -0.2666666666666668,
+        1.208888888888889
+      ]
+    ],
+    "movable": true,
+    "node_id": 911,
+    "type": "Node"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -0.21333333333333343,
+        1.1555555555555552
+      ]
+    ],
+    "movable": true,
+    "node_id": 884,
+    "type": "Node"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        0.1600000000000001,
+        1.1377777777777778
+      ]
+    ],
+    "movable": true,
+    "node_id": 909,
+    "type": "Node"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        0.14222222222222222,
+        0.9688888888888889
+      ]
+    ],
+    "movable": true,
+    "node_id": 886,
+    "type": "Node"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        0.2666666666666668,
+        0.7822222222222223
+      ]
+    ],
+    "movable": true,
+    "node_id": 849,
+    "type": "Node"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -0.026666666666666776,
+        0.5511111111111111
+      ]
+    ],
+    "movable": true,
+    "node_id": 850,
+    "type": "Node"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -0.07111111111111111,
+        0.28444444444444444
+      ]
+    ],
+    "movable": true,
+    "node_id": 907,
+    "type": "Node"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        0.12444444444444441,
+        0.26666666666666666
+      ]
+    ],
+    "movable": true,
+    "node_id": 915,
+    "type": "Node"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        0.11555555555555559,
+        0.44444444444444436
+      ]
+    ],
+    "movable": true,
+    "node_id": 917,
+    "type": "Node"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        0.7071067811865476,
+        0.7071067811865475
+      ]
+    ],
+    "movable": true,
+    "node_id": 851,
+    "type": "Node"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        1.0675468957064287,
+        0.7377777777777779
+      ]
+    ],
+    "movable": true,
+    "node_id": 906,
+    "type": "Node"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        1.0231024512619842,
+        0.5511111111111117
+      ]
+    ],
+    "movable": true,
+    "node_id": 920,
+    "type": "Node"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        0.9519913401508728,
+        0.4088888888888891
+      ]
+    ],
+    "movable": true,
+    "node_id": 904,
+    "type": "Node"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        0.8453246734842064,
+        0.2844444444444448
+      ]
+    ],
+    "movable": true,
+    "node_id": 902,
+    "type": "Node"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        0.6764357845953173,
+        0.2133333333333334
+      ]
+    ],
+    "movable": true,
+    "node_id": 852,
+    "type": "Node"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        0.5875468957064284,
+        0.07111111111111094
+      ]
+    ],
+    "movable": true,
+    "node_id": 900,
+    "type": "Node"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        0.6764357845953173,
+        -0.10666666666666638
+      ]
+    ],
+    "movable": true,
+    "node_id": 898,
+    "type": "Node"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        0.7742135623730951,
+        -0.07111111111111094
+      ]
+    ],
+    "movable": true,
+    "node_id": 896,
+    "type": "Node"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        0.7119913401508728,
+        0.008888888888888717
+      ]
+    ],
+    "movable": true,
+    "node_id": 894,
+    "type": "Node"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        0.7475468957064286,
+        0.07111111111111158
+      ]
+    ],
+    "movable": true,
+    "node_id": 892,
+    "type": "Node"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        0.8719913401508728,
+        0.04444444444444447
+      ]
+    ],
+    "movable": true,
+    "node_id": 890,
+    "type": "Node"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        0.9164357845953173,
+        -0.13333333333333325
+      ]
+    ],
+    "movable": true,
+    "node_id": 888,
+    "type": "Node"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        0.6853246734842062,
+        -0.19555555555555523
+      ]
+    ],
+    "movable": true,
+    "node_id": 853,
+    "type": "Node"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        0.5964357845953174,
+        -0.5599999999999998
+      ]
+    ],
+    "movable": true,
+    "node_id": 854,
+    "type": "Node"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        0.7071067811865476,
+        -0.7071067811865475
+      ]
+    ],
+    "movable": true,
+    "node_id": 855,
+    "type": "Node"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        0.11555555555555584,
+        -0.9697691179286506
+      ]
+    ],
+    "movable": true,
+    "node_id": 918,
+    "type": "Node"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        0.1244444444444448,
+        -1.1475468957064288
+      ]
+    ],
+    "movable": true,
+    "node_id": 916,
+    "type": "Node"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -0.07111111111111111,
+        -1.1297691179286506
+      ]
+    ],
+    "movable": true,
+    "node_id": 908,
+    "type": "Node"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -0.02666666666666675,
+        -0.8631024512619841
+      ]
+    ],
+    "movable": true,
+    "node_id": 856,
+    "type": "Node"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        0.2666666666666669,
+        -0.6319913401508729
+      ]
+    ],
+    "movable": true,
+    "node_id": 857,
+    "type": "Node"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        0.14222222222222228,
+        -0.44532467348420635
+      ]
+    ],
+    "movable": true,
+    "node_id": 885,
+    "type": "Node"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        0.16000000000000006,
+        -0.27643578459531765
+      ]
+    ],
+    "movable": true,
+    "node_id": 910,
+    "type": "Node"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -0.21333333333333365,
+        -0.25865800681754
+      ]
+    ],
+    "movable": true,
+    "node_id": 883,
+    "type": "Node"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -0.26666666666666694,
+        -0.20532467348420633
+      ]
+    ],
+    "movable": true,
+    "node_id": 912,
+    "type": "Node"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -0.3200000000000001,
+        -0.27643578459531737
+      ]
+    ],
+    "movable": true,
+    "node_id": 914,
+    "type": "Node"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -0.6666666666666663,
+        -0.4097691179286506
+      ]
+    ],
+    "movable": true,
+    "node_id": 881,
+    "type": "Node"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -0.6844444444444443,
+        -0.5431024512619838
+      ]
+    ],
+    "movable": true,
+    "node_id": 879,
+    "type": "Node"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -0.6133333333333333,
+        -0.6044444444444445
+      ]
+    ],
+    "movable": true,
+    "node_id": 858,
+    "type": "Node"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -0.7071067811865475,
+        -0.7071067811865476
+      ]
+    ],
+    "movable": true,
+    "node_id": 859,
+    "type": "Node"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -0.8177777777777778,
+        -0.5599999999999999
+      ]
+    ],
+    "movable": true,
+    "node_id": 860,
+    "type": "Node"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -0.7288888888888889,
+        -0.19555555555555548
+      ]
+    ],
+    "movable": true,
+    "node_id": 861,
+    "type": "Node"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -0.49777777777777776,
+        -0.13333333333333333
+      ]
+    ],
+    "movable": true,
+    "node_id": 887,
+    "type": "Node"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -0.5422222222222223,
+        0.04444444444444433
+      ]
+    ],
+    "movable": true,
+    "node_id": 889,
+    "type": "Node"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -0.6666666666666665,
+        0.07111111111111099
+      ]
+    ],
+    "movable": true,
+    "node_id": 891,
+    "type": "Node"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -0.7022222222222222,
+        0.008888888888888795
+      ]
+    ],
+    "movable": true,
+    "node_id": 893,
+    "type": "Node"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -0.64,
+        -0.07111111111111106
+      ]
+    ],
+    "movable": true,
+    "node_id": 895,
+    "type": "Node"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -0.7377777777777779,
+        -0.10666666666666652
+      ]
+    ],
+    "movable": true,
+    "node_id": 897,
+    "type": "Node"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -0.8266666666666667,
+        0.07111111111111107
+      ]
+    ],
+    "movable": true,
+    "node_id": 899,
+    "type": "Node"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -0.7377777777777778,
+        0.21333333333333318
+      ]
+    ],
+    "movable": true,
+    "node_id": 862,
+    "type": "Node"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -0.5688888888888889,
+        0.28444444444444456
+      ]
+    ],
+    "movable": true,
+    "node_id": 901,
+    "type": "Node"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -0.4622222222222222,
+        0.4088888888888889
+      ]
+    ],
+    "movable": true,
+    "node_id": 903,
+    "type": "Node"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -0.3911111111111109,
+        0.5511111111111112
+      ]
+    ],
+    "movable": true,
+    "node_id": 919,
+    "type": "Node"
+  },
+  {
+    "pos": [
+      "P5vector",
+      [
+        -0.34666666666666673,
+        0.7377777777777778
+      ]
+    ],
+    "movable": true,
+    "node_id": 905,
+    "type": "Node"
+  }
+],
+  "settings": {
+    "shape_radius": 93.81582293040428,
+    "rotation": 0,
+    "size_node": 10,
+    "select_distance": 20,
+    "projection": "Spherical",
+    "smoothed_curves": false,
+    "borders": true,
+    "show_nodes": true,
+    "background_color": [
+      220,
+      220,
+      220
+    ],
+    "tile_color": [
+      144,
+      191,
+      42
+    ],
+    "tile_flipped_color": [
+      3,
+      120,
+      166
+    ],
+    "border_color": [
+      255,
+      255,
+      255
+    ],
+    "movable_node_color": [
+      255,
+      255,
+      255
+    ],
+    "unmovable_node_color": [
+      100,
+      100,
+      100
+    ],
+    "active_node_color": [
+      255,
+      0,
+      0
+    ],
+    "linked_node_color": [
+      255,
+      100,
+      100
+    ]
+  }
+}
